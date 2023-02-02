@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm"
-import {ENV} from "@/common/enums/enums";
+import {ENV} from "./common/enums/enums";
 
 const dataSource = new DataSource({
     type: ENV.DB.TYPE,
@@ -8,8 +8,8 @@ const dataSource = new DataSource({
     username: ENV.DB.USERNAME,
     password: ENV.DB.PASSWORD,
     database: ENV.DB.NAME,
-    entities: ["src/entities/*.js"],
-    migrations: ["build/db/migrations/*"],
+    entities: ["./src/db/entities/*.ts"],
+    migrations: ["./src/db/migrations/*.ts"],
     logging: true,
 })
 
