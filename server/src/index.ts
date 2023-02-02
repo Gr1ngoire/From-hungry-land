@@ -12,6 +12,9 @@ dataSource.initialize()
 })
 
 const app = express();
+
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.listen(ENV.APP.SERVER_PORT);
+app.listen(ENV.APP.SERVER_PORT, () =>{
+    console.log("Server is started")
+});
