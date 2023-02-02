@@ -1,0 +1,1 @@
+export {type RoleResponseDto} from './role-response-dto.type';

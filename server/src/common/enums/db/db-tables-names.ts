@@ -1,5 +1,5 @@
 enum DbTablesNamesEnum {
-    ROLES = "role",
+    ROLES = "roles",
     USERS = "users"
 }
 

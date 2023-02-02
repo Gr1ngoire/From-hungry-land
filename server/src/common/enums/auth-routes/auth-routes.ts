@@ -1,0 +1,1 @@
+export {AuthRoutes} from 'shared/common/enums/enums'
