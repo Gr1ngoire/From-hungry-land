@@ -17,10 +17,6 @@
     "paths": {
       "@/*": ["./src/*"],
       "shared/*": ["../shared/*"]
-    },
-    "referencedModules": {
-      "shared": "../shared/",
-      "@/*": ["src/*"]
     }
   }
 }
