@@ -8,7 +8,8 @@ const dataSource = new DataSource({
     username: ENV.DB.USERNAME,
     password: ENV.DB.PASSWORD,
     database: ENV.DB.NAME,
-    entities: ["src/entities/*.js"],
+    entities: ["./src/db/entities/*.ts"],
+    migrations: ["./src/db/migrations/*.ts"],
     logging: true,
 })
 

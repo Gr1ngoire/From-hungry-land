@@ -19,7 +19,8 @@
       "shared/*": ["../shared/*"]
     },
     "referencedModules": {
-      "shared": "../shared/"
+      "shared": "../shared/",
+      "@/*": ["src/*"]
     }
   }
 }
