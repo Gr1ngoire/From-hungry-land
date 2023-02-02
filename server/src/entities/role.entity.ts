@@ -1,18 +1,12 @@
 import {Entity, Column, PrimaryGeneratedColumn} from "typeorm"
 
 @Entity()
-class User {
+class Role {
     @PrimaryGeneratedColumn()
     id: number
 
     @Column()
-    nickname: string
-
-    @Column()
-    email: string
-
-    @Column()
-    password: string
+    name: string
 }
 
-export {User}
+export { Role }
