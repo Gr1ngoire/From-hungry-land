@@ -13,4 +13,12 @@ const dataSource = new DataSource({
     logging: true,
 })
 
+dataSource.initialize()
+    .then(() => {
+        console.log('Connected to db')
+    })
+    .catch((err) => {
+    console.log(err);
+})
+
 export { dataSource }
