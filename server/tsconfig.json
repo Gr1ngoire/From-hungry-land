@@ -7,11 +7,19 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "outDir": "./build",
-    "rootDir": "./src",
+    "rootDirs": [
+      "./src",
+      "../shared"
+    ],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "shared/*": ["../shared/*"]
+    },
+    "referencedModules": {
+      "shared": "../shared/"
     }
   }
 }
