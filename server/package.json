@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:build": "tsc -watch",
-    "start:run": "nodemon build/index.js",
+    "start:run": "nodemon build/server/src/index.js",
     "start": "concurrently npm:start:*",
     "typeorm": "typeorm-ts-node-commonjs -d ./src/app-data-source.ts",
     "migration:run": "npm run typeorm -- migration:run",
@@ -45,7 +45,7 @@
     "watch": [
       "src"
     ],
-    "exec": "node -r tsconfig-paths/register -r ts-node/register build/index.js",
+    "exec": "node -r tsconfig-paths/register -r ts-node/register build/server/src/index.js",
     "ext": "ts, js"
   }
 }
