@@ -6,13 +6,10 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "./build",
-    "rootDirs": [
-      "./src",
-      "../shared"
-    ],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "outDir": "./build",
+    "rootDirs": ["./src", "../shared"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
