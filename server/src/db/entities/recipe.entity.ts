@@ -1,4 +1,5 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {RecipeDifficulty} from "../../common/enums/enums"
 
 @Entity("recipes")
 export class Recipe{
@@ -17,4 +18,9 @@ export class Recipe{
     @Column()
     imgUrl:string;
 
+    @Column({
+        type: "enum",
+        enum:RecipeDifficulty,
+    })
+    difficult: RecipeDifficulty
 }
