@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:build": "tsc -watch",
-    "start:run": "nodemon build/index.js",
+    "start:run": "nodemon build/server/src/index.js",
     "start": "concurrently npm:start:*",
     "typeorm": "typeorm-ts-node-commonjs -d ./src/app-data-source.ts",
     "migration:run": "npm run typeorm -- migration:run",
@@ -17,7 +17,6 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "2.4.3",
-    "body-parser": "1.20.1",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.0",
     "concurrently": "7.6.0",
@@ -45,7 +44,7 @@
     "watch": [
       "src"
     ],
-    "exec": "node -r tsconfig-paths/register -r ts-node/register build/index.js",
+    "exec": "node -r tsconfig-paths/register -r ts-node/register build/server/src/index.js",
     "ext": "ts, js"
   }
 }
