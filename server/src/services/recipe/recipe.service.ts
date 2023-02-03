@@ -37,7 +37,11 @@ class RecipeService{
         }
 
         if(query.difficulty){
-            whereOptions.difficult = In(query.difficulty)
+            if(typeof query.difficulty === "string"){
+                whereOptions.difficult = query.difficulty
+            }else {
+                whereOptions.difficult = In(query.difficulty)
+            }
         }
 
         dbQueryOption.where = whereOptions;

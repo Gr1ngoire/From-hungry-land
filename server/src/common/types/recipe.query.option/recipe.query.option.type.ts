@@ -4,6 +4,6 @@ export type RecipeQueryOptionType = {
     take?:number,
     skip?:number,
     searchQuery?:string
-    difficulty?:RecipeDifficulty[]
+    difficulty?:RecipeDifficulty[] | RecipeDifficulty
 }
 
