@@ -4,21 +4,16 @@ import {dataSource} from './app-data-source'
 import {ENV} from "@/common/enums/enums";
 import {recipeRouter} from "@/routes/recipe/recipe.routes";
 
-dataSource.initialize()
-    .then(() => {
-        console.log('Connected to db')
-    })
-    .catch((err) => {
-    console.log(err);
-})
+import {apiRouter} from "@/routers/routers";
+
+
 
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}))
 
-
-app.listen(ENV.APP.SERVER_PORT, () =>{
-    console.log("Server is started")
-});
-
+app.use("/api", apiRouter);
 app.use("/recipes", recipeRouter)
+
+app.listen(ENV.APP.SERVER_PORT);
+
