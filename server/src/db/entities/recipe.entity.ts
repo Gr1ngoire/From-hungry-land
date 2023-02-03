@@ -1,8 +1,9 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 import {RecipeDifficulty} from "../../common/enums/enums"
+import {Abstract} from "@/db/entities/abstract/abstract.entity";
 
 @Entity("recipes")
-export class Recipe{
+export class Recipe extends Abstract{
 
     @PrimaryGeneratedColumn()
     id:number;

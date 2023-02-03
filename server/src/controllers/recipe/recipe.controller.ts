@@ -4,7 +4,7 @@ import {RecipeQueryOptionType} from "@/common/types/types";
 
 
 
-class RecipeController{
+export class RecipeController{
 
     async getRecipe (req: Request<{id:number}>, res: Response):Promise<void>{
         try {
@@ -23,5 +23,3 @@ class RecipeController{
         }
     }
 }
-
-export const recipeController = new RecipeController();
