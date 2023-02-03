@@ -1,16 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser';
-import {dataSource} from './app-data-source'
 import {ApiRoutes, ENV} from "@/common/enums/enums";
-import {apiRouter} from "@/routes/routes";
-
-dataSource.initialize()
-    .then(() => {
-        console.log('Connected to db')
-    })
-    .catch((err) => {
-    console.log(err);
-})
+import {apiRouter} from "@/routers/routers";
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}))
@@ -22,3 +13,5 @@ app.get("/test", (req, res) => {
 app.listen(ENV.APP.SERVER_PORT, () => {
     console.log(`Listening port ${ENV.APP.SERVER_PORT}`)
 });
+
+app.listen(ENV.APP.SERVER_PORT);
