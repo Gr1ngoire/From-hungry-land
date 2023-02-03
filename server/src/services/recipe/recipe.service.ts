@@ -1,7 +1,7 @@
 import {dataSource} from "@/app-data-source";
 import {Recipe} from "@/db/entities/recipe.entity";
 import {FindManyOptions} from "typeorm/find-options/FindManyOptions";
-import {Like} from "typeorm";
+import {In, Like} from "typeorm";
 import {FindOptionsWhere} from "typeorm/find-options/FindOptionsWhere";
 import {RecipeDifficulty} from "@/common/enums/RecipeDifficulty/recipeDifficulty.enum";
 import {RecipeQueryOptionInterface} from "@/common/interfaces/recipe.query.option/recipe.query.option.interface";
@@ -16,7 +16,7 @@ class RecipeService{
             }
         });
 
-        if(recipe){
+        if(!recipe){
             throw new Error(`Recipe with id = ${id} does not exist in db`)
         }
 
@@ -28,9 +28,7 @@ class RecipeService{
         const dbQueryOption:FindManyOptions<Recipe> = {
             take:query.take || 50,
             skip: query.skip || 0,
-            where:{
-                difficult: RecipeDifficulty.EASY,
-            }
+
         }
         const whereOptions:FindOptionsWhere<Recipe> = {}
 
@@ -38,21 +36,10 @@ class RecipeService{
             whereOptions.name = Like(`%${query.searchQuery.trim()}%`)
         }
 
-        const diff =query.difficulty
-        if(diff){
-            if(diff[0]){
-                whereOptions.difficult =
-                    diff[0]
-            }
-            if(diff[1]){
-                whereOptions.difficult =
-                    diff[0] || diff[1]
-            }
-            if(diff[2]){
-                whereOptions.difficult =
-                    diff[0] || diff[1] || diff[2]
-            }
+        if(query.difficulty){
+            whereOptions.difficult = In(query.difficulty)
         }
+
         dbQueryOption.where = whereOptions;
 
 
