@@ -9,4 +9,3 @@ apiRouter.use(ApiRoutes.AUTH, authRouter);
 apiRouter.use(ApiRoutes.RECIPES, recipeRouter)
 
 export {apiRouter}
-export {recipeRouter} from "./recipe/recipe.routes"
