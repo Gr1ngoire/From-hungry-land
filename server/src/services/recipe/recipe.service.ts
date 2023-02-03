@@ -1,10 +1,10 @@
 import {dataSource} from "@/app-data-source";
 import {Recipe} from "@/db/entities/recipe.entity";
-import RecipeQueryOptionInterface from "shared/common/interfaces/recipe.query.option/recipe.query.option.interface";
 import {FindManyOptions} from "typeorm/find-options/FindManyOptions";
 import {Like} from "typeorm";
 import {FindOptionsWhere} from "typeorm/find-options/FindOptionsWhere";
 import {RecipeDifficulty} from "@/common/enums/RecipeDifficulty/recipeDifficulty.enum";
+import {RecipeQueryOptionInterface} from "@/common/interfaces/recipe.query.option/recipe.query.option.interface";
 
 class RecipeService{
     private readonly repo = dataSource.getRepository(Recipe)
