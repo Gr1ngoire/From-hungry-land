@@ -1,0 +1,1 @@
+export {recipeRouter} from "./recipe/recipe.routes"
