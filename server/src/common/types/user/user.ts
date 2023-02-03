@@ -1,1 +1,1 @@
-export {type UserResponseDto, type UserSignInDto} from 'shared/common/types/types'
+export {type UserResponseDto, type UserSignInDto, type UserSignUpDto} from 'shared/common/types/types'

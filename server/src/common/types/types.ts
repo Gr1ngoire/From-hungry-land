@@ -1,2 +1,2 @@
 export {type DbClient} from './db/db'
-export {type UserResponseDto, type UserSignInDto} from './user/user'
+export {type UserResponseDto, type UserSignInDto, type UserSignUpDto} from './user/user'
