@@ -3,10 +3,9 @@ import {Recipe} from "@/db/entities/recipe.entity";
 import {FindManyOptions} from "typeorm/find-options/FindManyOptions";
 import {In, Like} from "typeorm";
 import {FindOptionsWhere} from "typeorm/find-options/FindOptionsWhere";
-import {RecipeDifficulty} from "@/common/enums/recipeDifficulty/recipeDifficulty.enum";
 import {RecipeQueryOptionType} from "@/common/types/types";
 
-class RecipeService{
+export class RecipeService{
     private readonly repo = dataSource.getRepository(Recipe)
 
     async get(id: number):Promise<Recipe>{
@@ -50,9 +49,4 @@ class RecipeService{
         return await this.repo.find(dbQueryOption);
     }
 
-
-
-
 }
-
-export const recipeService = new RecipeService();
