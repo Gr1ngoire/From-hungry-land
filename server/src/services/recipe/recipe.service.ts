@@ -4,7 +4,7 @@ import {FindManyOptions} from "typeorm/find-options/FindManyOptions";
 import {In, Like} from "typeorm";
 import {FindOptionsWhere} from "typeorm/find-options/FindOptionsWhere";
 import {RecipeDifficulty} from "@/common/enums/RecipeDifficulty/recipeDifficulty.enum";
-import {RecipeQueryOptionInterface} from "@/common/interfaces/recipe.query.option/recipe.query.option.interface";
+import {RecipeQueryOptionType} from "@/common/types/types";
 
 class RecipeService{
     private readonly repo = dataSource.getRepository(Recipe)
@@ -23,7 +23,7 @@ class RecipeService{
         return recipe;
     }
 
-    async getAll(query:RecipeQueryOptionInterface):Promise<Recipe[]>{
+    async getAll(query:RecipeQueryOptionType):Promise<Recipe[]>{
 
         const dbQueryOption:FindManyOptions<Recipe> = {
             take:query.take || 50,

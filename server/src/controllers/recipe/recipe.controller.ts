@@ -1,6 +1,6 @@
 import {recipeService} from "../../services/services"
 import {Request, Response} from "express";
-import {RecipeQueryOptionInterface} from "@/common/interfaces/recipe.query.option/recipe.query.option.interface";
+import {RecipeQueryOptionType} from "@/common/types/types";
 
 
 
@@ -15,7 +15,7 @@ class RecipeController{
 
     }
 
-    async getAllRecipes (req: Request<any, any, any, RecipeQueryOptionInterface>, res: Response):Promise<void>{
+    async getAllRecipes (req: Request<any, any, any, RecipeQueryOptionType>, res: Response):Promise<void>{
         try {
             res.json(await recipeService.getAll(req.query))
         }catch (e){

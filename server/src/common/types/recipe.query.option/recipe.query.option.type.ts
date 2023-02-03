@@ -1,6 +1,6 @@
 import {RecipeDifficulty} from "../../enums/enums";
 
-export interface RecipeQueryOptionInterface {
+export type RecipeQueryOptionType = {
     take?:number,
     skip?:number,
     searchQuery?:string
