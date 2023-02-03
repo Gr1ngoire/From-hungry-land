@@ -1,10 +1,10 @@
-import {Entity, Column, PrimaryGeneratedColumn} from "typeorm"
+import {Entity, Column, JoinColumn, ManyToOne} from "typeorm";
+import {DbTablesNamesEnum} from "../../common/enums/enums";
+import {Abstract} from "./abstract/abstract.entity";
+import {Role} from './role.entity'
 
-@Entity()
-class User {
-    @PrimaryGeneratedColumn()
-    id: number
-
+@Entity({name: DbTablesNamesEnum.USERS})
+class User extends Abstract {
     @Column()
     nickname: string
 
@@ -13,6 +13,12 @@ class User {
 
     @Column()
     password: string
+
+    @ManyToOne(() => Role, (role) => role.users, {
+        onDelete: 'CASCADE',
+    })
+    @JoinColumn({ name: 'role_id' })
+    role: Role;
 }
 
 export {User}
