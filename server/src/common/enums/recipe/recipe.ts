@@ -1,1 +1,1 @@
-export {RecipeRoutes} from 'shared/common/enums/enums'
+export {RecipeRoutes, RecipeDifficulty} from 'shared/common/enums/enums'

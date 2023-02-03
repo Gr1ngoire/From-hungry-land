@@ -22,24 +22,24 @@ export class RecipeService{
         return recipe;
     }
 
-    async getAll(query:RecipeQueryOptionType):Promise<Recipe[]>{
+    async getAll({difficulty, searchQuery, skip, take}: RecipeQueryOptionType):Promise<Recipe[]>{
 
         const dbQueryOption:FindManyOptions<Recipe> = {
-            take:query.take || 50,
-            skip: query.skip || 0,
+            take:take || 50,
+            skip: skip || 0,
 
         }
         const whereOptions:FindOptionsWhere<Recipe> = {}
 
-        if(query.searchQuery){
-            whereOptions.name = Like(`%${query.searchQuery.trim()}%`)
+        if(searchQuery){
+            whereOptions.name = Like(`%${searchQuery.trim()}%`)
         }
 
-        if(query.difficulty){
-            if(typeof query.difficulty === "string"){
-                whereOptions.difficult = query.difficulty
+        if(difficulty){
+            if(typeof difficulty === "string"){
+                whereOptions.difficult = difficulty
             }else {
-                whereOptions.difficult = In(query.difficulty)
+                whereOptions.difficult = In(difficulty)
             }
         }
 

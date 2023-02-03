@@ -1,4 +1,4 @@
-import {recipeService} from "../../services/services"
+import {recipeService} from "@/services/services"
 import {Request, Response} from "express";
 import {RecipeQueryOptionType} from "@/common/types/types";
 

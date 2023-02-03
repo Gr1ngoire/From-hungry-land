@@ -1,6 +1,6 @@
 import {Router} from "express";
 import {recipeController} from "@/controllers/controllers";
-import {RecipeRoutes} from "@/common/enums/recipe/recipe";
+import {RecipeRoutes} from "@/common/enums/enums";
 
 const recipeRouter = Router();
 
