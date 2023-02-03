@@ -1,0 +1,1 @@
+export {dtoValidationMiddleware} from './dto/dto-validation.middleware'

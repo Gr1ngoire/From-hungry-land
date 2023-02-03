@@ -1,11 +1,12 @@
-import express, {Request, Response} from "express";
+import {Router} from "express";
 import {AuthRoutes} from "@/common/enums/enums";
-import {type UserResponseDto, type UserSignInDto} from "@/common/types/types";
+import {dtoValidationMiddleware} from "@/middlewares/middlewares";
+import {UserSignInValidationDto, UserSignUpValidationDto} from "@/validation-dtos/validation-dtos";
+import {authController} from "@/controllers/controllers";
 
-const authRouter = express.Router();
+const authRouter: Router = Router();
 
-authRouter.post(AuthRoutes.SIGN_IN, (req: Request<any, any, UserSignInDto>, res: Response<UserResponseDto>) => {
-
-})
+authRouter.post(AuthRoutes.SIGN_IN, dtoValidationMiddleware(UserSignInValidationDto), authController.signIn)
+authRouter.post(AuthRoutes.SIGN_UP, dtoValidationMiddleware(UserSignUpValidationDto), authController.signUp)
 
 export {authRouter}

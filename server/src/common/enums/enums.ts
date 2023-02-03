@@ -1,3 +1,4 @@
-export {AuthRoutes} from './auth-routes/auth-routes'
+export {ApiRoutes} from './api/api'
+export {AuthRoutes} from './auth/auth'
 export {DbTablesNamesEnum} from './db/db-tables-names'
 export {ENV} from './env/env'

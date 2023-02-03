@@ -1,1 +1,2 @@
-export {AuthRoutes} from './auth-routes/auth-routes'
+export {AuthRoutes} from './auth/auth'
+export {ApiRoutes} from './api/api'
