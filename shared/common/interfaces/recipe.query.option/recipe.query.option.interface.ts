@@ -1,4 +1,4 @@
-import {RecipeDifficulty} from "../../../../server/src/common/enums/RecipeDifficulty/recipeDifficulty.enum";
+import {RecipeDifficulty} from "../../../../server/src/common/enums/recipeDifficulty/recipeDifficulty.enum";
 
 export default interface RecipeQueryOptionInterface{
     take?:number,
