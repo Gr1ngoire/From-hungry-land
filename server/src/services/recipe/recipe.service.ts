@@ -7,7 +7,7 @@ import {FindOptionsWhere} from "typeorm/find-options/FindOptionsWhere";
 import {RecipeDifficulty} from "@/common/enums/RecipeDifficulty/recipeDifficulty.enum";
 
 class RecipeService{
-    repo = dataSource.getRepository(Recipe)
+    private readonly repo = dataSource.getRepository(Recipe)
 
     async get(id: number):Promise<Recipe>{
         const recipe  = await this.repo.findOne({
