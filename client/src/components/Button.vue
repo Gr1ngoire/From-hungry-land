@@ -1,12 +1,12 @@
 <template>
-  <button :class="'btn ' + bgColor">
+  <button  @click="handleClick" :class="'btn ' + bgColor">
     <font-awesome-icon v-if="icon" :icon="icon" />
     <span>{{ text }}</span>
   </button>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+
 
 const props = defineProps({
   text: {
@@ -20,8 +20,20 @@ const props = defineProps({
   icon: {
     type: Array,
     required: false,
-  },
+  }
 });
+
+const emit = defineEmits(["click"]);
+
+const handleClick = () => {
+  emit("click");
+};
+
+
+
+
+
+
 </script>
 
 <style scoped>
@@ -36,5 +48,7 @@ const props = defineProps({
   border: none;
   padding: 0.5rem 1rem 0.5rem 1rem;
   color: white;
+  transition: .3s;
 }
+
 </style>
