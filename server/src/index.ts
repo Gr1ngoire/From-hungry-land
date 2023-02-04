@@ -2,9 +2,9 @@ import express from 'express'
 import {ApiRoutes, ENV} from "@/common/enums/enums";
 import {apiRouter} from "@/routes/routes";
 
-
-
 const app = express();
+
+app.use("/api", apiRouter);
 
 app.use(express.json())
 app.use(ApiRoutes.API, apiRouter)
