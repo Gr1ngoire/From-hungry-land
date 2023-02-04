@@ -1,6 +1,8 @@
+import {Roles} from "../../enums/role/roles.enum";
+
 type RoleResponseDto = {
     id: number;
-    name: string;
+    name: Roles;
 }
 
 export {type RoleResponseDto};
