@@ -1,12 +1,23 @@
-import { ProductTagRepository } from "@/repositories/repositories";
-import { ProductTag } from "@/db/entities/productTag.entity";
+import {ProductTagRepository} from "@/repositories/repositories";
+import {ProductTag} from "@/db/entities/productTag.entity";
+import {EntityNotFoundException} from "@/common/exceptions/entity/entity-not-found.exception";
 
 export class ProductTagService {
-  constructor(private productTagRepository: ProductTagRepository) {
-    this.productTagRepository = productTagRepository;
-  }
+    private readonly repo:ProductTagRepository
 
-  public getAll = async (): Promise<ProductTag[]> => {
-    return await this.productTagRepository.getAll();
-  }
+    constructor(repo: ProductTagRepository) {
+        this.repo = repo;
+    }
+
+    public getAll = async (): Promise<ProductTag[]> => {
+        return await this.repo.getAll();
+    }
+
+    async get(id: number) {
+        const tag = await this.get(id)
+        if (tag) {
+            throw new EntityNotFoundException(`Tag with id = ${id} does not exist `, id)
+        }
+        return tag
+    }
 }

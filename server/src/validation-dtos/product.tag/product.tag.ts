@@ -1,1 +1,0 @@
-export{ProductTagDto} from "./product.tag.dto"

@@ -1,21 +1,33 @@
-import { Repository } from "typeorm";
-import { Product } from "../../db/entities/product.entity";
+import {Repository} from "typeorm";
+import {Product} from "@/db/entities/product.entity";
 
-export class ProductRepository {
-  private repository : Repository<Product>;
+export class ProductRepository{
+    private readonly repo:Repository<Product>
 
-  constructor( repository: Repository<Product>) {
-    this.repository = repository;
-  }
+    constructor(repo: Repository<Product>) {
+        this.repo = repo;
+    }
 
-  public getAll = async (): Promise<Product[]> => {
-    return await this.repository.find();
-  }
+    public getAll = async (): Promise<Product[]> => {
+        return await this.repo.find({
+            relations:{
+                productTag:true
+            },
+            select:{
+                name:true,
+                imgUrl:true
+            }
+        });
+    };
 
-  public  getByProductTagId = async (id: number): Promise<Product[]> => {
-    return await this.repository.find({
-      relations: ["productTag"],  
-      where: { productTag: { id } },
-    });
-  }
+    public async getByTagId(id: number): Promise<Product[]> {
+        return await this.repo.find({
+            relations: ["productTag"],
+            where: { productTag: { id } },
+            select:{
+                name:true,
+                imgUrl:true
+            }
+        });
+    }
 }
