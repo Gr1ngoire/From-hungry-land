@@ -5,7 +5,11 @@ import Product from "@/components/Product.vue";
 
 import { ref, reactive } from "vue";
 
-const selected = ref(null);
+const selected = ref({
+    name: "",
+    imgUrl: "",
+    tag: "",
+});
 const options = reactive(["one", "two", "three"]);
 const filters = reactive([
     "filter1",
@@ -43,10 +47,12 @@ const removeFilter = (filter: string) => {
 <template>
     <div class="page-wrapper">
         <div class="page-section rounded">
+            <p class="caption-text">Add Products</p>
             <div class="product-search-wrapper">
                 <VueSelect class="flex-grow-4 min-w-10" :options="options" v-model="selected" label="name" />
                 <Button text="Add" class="flex-grow-1" bgColor="bg-cyan-green" :icon="['fas', 'plus']" />
             </div>
+            <p class="caption-text">Your Products</p>
             <div class="products-wrapper">
                 <Product v-for="product in products" :name="product.name" :image="product.imgUrl" :alt="product.name"
                     :tag="product.tag">
@@ -54,7 +60,7 @@ const removeFilter = (filter: string) => {
             </div>
         </div>
         <div class="page-section rounded">
-            <p class="filters-text">Filters</p>
+            <p class="caption-text">Filters</p>
             <div class="filters-section">
                 <Button v-for="filter in chosenFilters" :text="filter" class="flex-grow-1" bgColor="bg-pink" 
                 @click="removeFilter(filter)"/>
@@ -94,18 +100,18 @@ const removeFilter = (filter: string) => {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .products-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
-    padding: 1rem 0 0 0;
 }
 
 /* filters section */
 
-.filters-text {
+.caption-text {
     font-size: 1.2rem;
     font-weight: 600;
     padding: 0;
