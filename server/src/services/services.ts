@@ -1,13 +1,12 @@
+import { RecipeService } from "./recipe/recipe.service";
 import { ProductService } from "./product/product.service";
 import { ProductTagService } from "./productTag/productTag.service";
+import {recipeRepository, productRepository, productTagRepository} from "@/repositories/repositories";
 
-import { productRepository } from "@/repositories/repositories";
-import { productTagRepository } from "@/repositories/repositories";
 
-export {
-    ProductService,
-    ProductTagService,
-}
+const recipeService = new RecipeService(recipeRepository);
+const productService = new ProductService(productRepository);
+const productTagService = new ProductTagService(productTagRepository);
 
-export const productService = new ProductService(productRepository);
-export const productTagService = new ProductTagService(productTagRepository);
+export {recipeService, productService, productTagService}
+export {RecipeService, ProductService, ProductTagService}

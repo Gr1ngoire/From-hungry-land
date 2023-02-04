@@ -1,0 +1,1 @@
+export {ProductRoutes} from "shared/common/enums/enums"

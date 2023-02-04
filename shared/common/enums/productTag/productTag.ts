@@ -1,0 +1,1 @@
+export {ProductTagRoutes} from "./productTag-routes"

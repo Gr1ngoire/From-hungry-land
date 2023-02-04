@@ -1,19 +1,14 @@
-import { dataSource } from "@/app-data-source";
+import {ProductRepository} from "@/repositories/product/product.repository";
+import {dataSource} from "@/app-data-source";
+import {Recipe} from "@/db/entities/recipe.entity";
+import {Product} from "@/db/entities/product.entity";
+import {ProductTag} from "@/db/entities/productTag.entity";
+import {ProductTagRepository} from "@/repositories/productTag/product-tag.repository";
+import {RecipeRepository} from "@/repositories/recipe/recipe.repository";
 
-import { ProductRepository } from "./product/product.repository";
-import { ProductTagRepository } from "./productTag/productTag.repository";
+const productRepository:ProductRepository = new ProductRepository(dataSource.getRepository(Product))
+const productTagRepository:ProductTagRepository = new ProductTagRepository(dataSource.getRepository(ProductTag))
+const recipeRepository:RecipeRepository = new RecipeRepository(dataSource.getRepository(Recipe))
 
-import { Product } from "@/db/entities/product.entity";
-import { ProductTag } from "@/db/entities/productTag.entity";
-
-export {
-    ProductRepository,
-    ProductTagRepository,
-}
-
-export const productRepository = new ProductRepository(
-  dataSource.getRepository(Product)
-)
-export const productTagRepository = new ProductTagRepository(
-  dataSource.getRepository(ProductTag)
-)
+export {productRepository, productTagRepository, recipeRepository}
+export {RecipeRepository, ProductRepository, ProductTagRepository}

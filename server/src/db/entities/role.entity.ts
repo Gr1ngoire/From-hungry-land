@@ -1,5 +1,5 @@
 import {Entity, Column, OneToMany} from "typeorm";
-import {DbTablesNamesEnum} from "../../common/enums/enums";
+import {DbTablesNamesEnum} from "@/common/enums/enums";
 import {Abstract} from "./abstract/abstract.entity";
 import {User} from './user.entity'
 
