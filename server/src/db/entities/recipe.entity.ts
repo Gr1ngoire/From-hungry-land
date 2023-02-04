@@ -1,6 +1,6 @@
 import {Column, Entity} from "typeorm";
 import {Abstract} from "./abstract/abstract.entity";
-import {DbTablesNamesEnum, RecipeDifficulty} from "../../common/enums/enums";
+import {DbTablesNamesEnum, RecipeDifficulty} from "@/common/enums/enums";
 
 
 @Entity({name: DbTablesNamesEnum.RECIPES})
