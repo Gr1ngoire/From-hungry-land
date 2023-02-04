@@ -5,8 +5,6 @@ import {pageNotFoundValidationMiddleware} from "@/middlewares/middlewares";
 
 const app = express();
 
-app.use("/api", apiRouter);
-
 app.use(express.json())
 app.use(ApiRoutes.API, apiRouter)
 app.use(pageNotFoundValidationMiddleware)

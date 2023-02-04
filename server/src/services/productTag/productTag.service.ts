@@ -16,7 +16,7 @@ export class ProductTagService {
     async get(id: number) {
         const tag = await this.get(id)
         if (tag) {
-            throw new EntityNotFoundException(`Tag with id = ${id} does not exist `, id)
+            throw new EntityNotFoundException(`Tag with id = ${id} does not exist `)
         }
         return tag
     }

@@ -1,0 +1,1 @@
+export {DbTablesNamesEnum} from './db-tables-names'

@@ -1,5 +1,5 @@
 import {Entity, Column, JoinColumn, ManyToOne} from "typeorm";
-import {DbTablesNamesEnum} from "@/common/enums/enums";
+import {DbTablesNamesEnum} from "../../common/enums/enums";
 import {Abstract} from "./abstract/abstract.entity";
 import {Role} from './role.entity'
 
@@ -15,7 +15,7 @@ class User extends Abstract {
     password: string
 
     @ManyToOne(() => Role, (role) => role.users, {
-        onDelete: 'CASCADE',
+        onDelete: 'CASCADE', nullable: false
     })
     @JoinColumn({ name: 'role_id' })
     role: Role;

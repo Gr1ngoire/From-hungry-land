@@ -1,0 +1,1 @@
+export {type RoleResponseDto} from 'shared/common/types/types'
