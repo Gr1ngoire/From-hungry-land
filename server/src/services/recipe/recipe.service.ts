@@ -12,6 +12,13 @@ export class RecipeService{
 
     async get(id: number):Promise<Recipe>{
         const recipe  = await this.repo.findOne({
+            select:{
+              id:true,
+              name:true,
+              instruction:true,
+              imgUrl:true,
+              difficult:true
+            },
             where:{
                 id
             }
@@ -27,6 +34,13 @@ export class RecipeService{
     async getAll({difficulty, searchQuery, skip, take}: RecipeQueryOptionType):Promise<Recipe[]>{
 
         const dbQueryOption:FindManyOptions<Recipe> = {
+            select:{
+                id:true,
+                name:true,
+                instruction:true,
+                imgUrl:true,
+                difficult:true
+            },
             take:take || 50,
             skip: skip || 0,
 

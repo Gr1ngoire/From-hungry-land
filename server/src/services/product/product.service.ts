@@ -6,7 +6,15 @@ export class ProductService {
   private readonly repo = productRepo
 
   public getAll = async (): Promise<Product[]> => {
-    return await this.repo.find();
+    return await this.repo.find({
+      relations:{
+        productTag:true
+      },
+      select:{
+        name:true,
+        imgUrl:true
+      }
+    });
   };
 
   public async getByProductTagId(id: number): Promise<Product[]> {
@@ -14,6 +22,10 @@ export class ProductService {
     return await this.repo.find({
       relations: ["productTag"],
       where: { productTag: { id } },
+      select:{
+        name:true,
+        imgUrl:true
+      }
     });
   }
 }

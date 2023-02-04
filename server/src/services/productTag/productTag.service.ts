@@ -15,7 +15,15 @@ export class ProductTagService {
     }
 
     async get(id: number) {
-        const tag = await this.repo.findOneBy({id})
+        const tag = await this.repo.findOne({
+            select: {
+                id: true,
+                name: true,
+            },
+            where:{
+                id
+            }
+        })
         if (tag) {
             throw new EntityNotFoundException(`Tag with id = ${id} does not exist `, id, 500)
         }
