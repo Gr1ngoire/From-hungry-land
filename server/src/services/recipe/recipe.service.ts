@@ -4,9 +4,10 @@ import {FindManyOptions} from "typeorm/find-options/FindManyOptions";
 import {In, Like} from "typeorm";
 import {FindOptionsWhere} from "typeorm/find-options/FindOptionsWhere";
 import {RecipeQueryOptionType} from "@/common/types/types";
+import {recipeRepo} from "@/repositories/repositories";
 
 export class RecipeService{
-    private readonly repo = dataSource.getRepository(Recipe)
+    private readonly repo = recipeRepo
 
     async get(id: number):Promise<Recipe>{
         const recipe  = await this.repo.findOne({

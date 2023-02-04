@@ -1,16 +1,17 @@
-import { ProductRepository } from "@/repositories/repositories";
 import { Product } from "@/db/entities/product.entity";
+import {productRepo} from "@/repositories/repositories";
 
 export class ProductService {
-  constructor(private productRepository: ProductRepository) {
-    this.productRepository = productRepository;
-  }
+  private readonly repo = productRepo
 
   public getAll = async (): Promise<Product[]> => {
-    return await this.productRepository.getAll();
+    return await this.repo.find();
   };
 
   public async getByProductTagId(id: number): Promise<Product[]> {
-    return await this.productRepository.getByProductTagId(id);
+    return await this.repo.find({
+      relations: ["productTag"],
+      where: { productTag: { id } },
+    });
   }
 }
