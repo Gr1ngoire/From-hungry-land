@@ -33,6 +33,9 @@ export class RecipeRepository {
                 imgUrl: true,
                 difficult: true
             },
+            relations: {
+                products:true
+            },
             take: take || 50,
             skip: skip || 0,
             where: whereOptions
