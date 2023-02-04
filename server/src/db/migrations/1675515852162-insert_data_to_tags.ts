@@ -20,6 +20,10 @@ export class insertDataToTags1675515852162 implements MigrationInterface {
         await queryRunner.query(`INSERT INTO product_tag(name) VALUES('insects')`)
         await queryRunner.query(`INSERT INTO product_tag(name) VALUES('mushrooms')`)
         await queryRunner.query(`INSERT INTO product_tag(name) VALUES('algae')`)
+        await queryRunner.query(`INSERT INTO product_tag(name) VALUES('spices')`)
+        await queryRunner.query(`INSERT INTO product_tag(name) VALUES('porridge')`)
+        await queryRunner.query(`INSERT INTO product_tag(name) VALUES('chocolate')`)
+        await queryRunner.query(`INSERT INTO product_tag(name) VALUES('oil')`)
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
