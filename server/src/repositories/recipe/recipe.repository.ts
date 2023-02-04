@@ -34,7 +34,9 @@ export class RecipeRepository {
                 difficult: true
             },
             relations: {
-                productRecipes:true
+                productRecipes:{
+                    product:true
+                }
             },
             take: take || 50,
             skip: skip || 0,
