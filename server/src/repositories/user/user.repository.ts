@@ -1,6 +1,7 @@
 import {Repository} from "typeorm";
 import {User} from "@/db/entities/user.entity";
 import {UserResponseDto, UserSignUpDto, UserWithPassword} from "@/common/types/types";
+import {AlreadyExistsException} from "@/common/exceptions/user/already-exists.exception";
 
 class UserRepository {
     constructor(private dbRepository: Repository<User>) {}
@@ -58,7 +59,7 @@ class UserRepository {
         const userWithSameEmail = await this.getByEmail(userDto.email);
 
         if (userWithSameEmail) {
-            throw new Error('User with such email already exists');
+            throw new AlreadyExistsException('User with such email already exists');
         }
 
         const newUser = this.dbRepository.create(userDto);

@@ -16,7 +16,7 @@ export class RecipeService{
         const recipe  = this.repo.get(id)
 
         if(!recipe){
-            throw new EntityNotFoundException(`Recipe with id = ${id} does not exist in db`, id)
+            throw new EntityNotFoundException(`Recipe with id = ${id} does not exist in db`)
         }
 
         return recipe;
