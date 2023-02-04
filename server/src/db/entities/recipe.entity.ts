@@ -1,7 +1,7 @@
-import {Column, Entity, JoinTable, ManyToMany} from "typeorm";
+import {Column, Entity, OneToMany} from "typeorm";
 import {Abstract} from "./abstract/abstract.entity";
 import {DbTablesNamesEnum} from "../../common/enums/enums";
-import {Product} from "../entities/product.entity";
+import {RecipeToProductEntity} from "../entities/recipe-to-product.entity";
 export enum RecipeDifficulty{
     EASY = "easy",
     MEDIUM = "medium",
@@ -29,17 +29,6 @@ export class Recipe extends Abstract{
     })
     difficult: RecipeDifficulty
 
-    @ManyToMany(() => Product)
-    @JoinTable({
-        name: "recipes_to_products",
-        joinColumn: {
-            name: "recipe_id",
-            referencedColumnName: "id"
-        },
-        inverseJoinColumn: {
-            name: "product_id",
-            referencedColumnName: "id"
-        }
-    })
-    products: Product[]
+    @OneToMany(type => RecipeToProductEntity, productRecipe =>productRecipe.recipe)
+    productRecipes: RecipeToProductEntity[]
 }
