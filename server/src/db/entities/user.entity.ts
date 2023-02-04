@@ -15,7 +15,7 @@ class User extends Abstract {
     password: string
 
     @ManyToOne(() => Role, (role) => role.users, {
-        onDelete: 'CASCADE',
+        onDelete: 'CASCADE', nullable: false
     })
     @JoinColumn({ name: 'role_id' })
     role: Role;

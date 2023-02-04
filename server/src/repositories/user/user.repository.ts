@@ -2,13 +2,15 @@ import {Repository} from "typeorm";
 import {User} from "@/db/entities/user.entity";
 import {UserResponseDto, UserSignUpDto, UserWithPassword} from "@/common/types/types";
 import {AlreadyExistsException} from "@/common/exceptions/user/already-exists.exception";
+import {RoleRepository} from "@/repositories/role/role.repository";
+import {Roles} from "shared/common/enums/role/roles.enum";
 
 class UserRepository {
-    constructor(private dbRepository: Repository<User>) {}
+    constructor(private dbUserRepository: Repository<User>, private roleRepository: RoleRepository) {}
 
 
     public getById(id: number): Promise<null | UserResponseDto>{
-        return this.dbRepository.findOne({
+        return this.dbUserRepository.findOne({
             where: {
                 id
             },
@@ -23,7 +25,7 @@ class UserRepository {
         })
     }
     public getByEmail(email: string): Promise<UserResponseDto | null> {
-        return this.dbRepository.findOne({
+        return this.dbUserRepository.findOne({
             where: {
                 email
             },
@@ -39,7 +41,7 @@ class UserRepository {
     }
 
     public getByEmailWithPassword(email: string): Promise<UserWithPassword | null> {
-        return this.dbRepository.findOne({
+        return this.dbUserRepository.findOne({
             where: {
                 email
             },
@@ -62,8 +64,13 @@ class UserRepository {
             throw new AlreadyExistsException('User with such email already exists');
         }
 
-        const newUser = this.dbRepository.create(userDto);
-        const createdUser = await this.dbRepository.save(newUser);
+        const role = await this.roleRepository.getIdByName(Roles.USER);
+
+        const newUser = this.dbUserRepository.create({
+            ...userDto,
+            role
+        });
+        const createdUser = await this.dbUserRepository.save(newUser);
         return this.getById(createdUser.id);
     }
 }

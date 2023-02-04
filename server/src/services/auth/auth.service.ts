@@ -50,7 +50,9 @@ class AuthService {
         if (!passwordIsValid) {
             throw new InvalidCredentialsException('Invalid email or password');
         }
-        return userInDb;
+
+        const {id, nickname, email: userInDbEmail, role} = userInDb
+        return {id, nickname, email: userInDbEmail, role};
     }
 }
 

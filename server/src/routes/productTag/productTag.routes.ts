@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { productTagController } from "@/controllers/controllers";
-import {ProductTagRoutes} from "../../common/enums/enums";
+import {ProductTagRoutes} from "@/common/enums/enums";
 
-const router = Router();
+const productTagRouter = Router();
 
-router.get(ProductTagRoutes.GETALL, productTagController.getAll);
+productTagRouter.get(ProductTagRoutes.GETALL, productTagController.getAll);
 
-export { router as productTagRouter };
+export { productTagRouter };

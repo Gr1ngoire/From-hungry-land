@@ -5,6 +5,7 @@ import {plainToClass} from "class-transformer";
 
 function dtoValidationMiddleware(type: any, whitelist = true): RequestHandler {
     return async (req: Request<any, any, UserSignInDto>, res: Response, next: NextFunction): Promise<void> => {
+        console.log(req.body)
         const dtoObject: object = plainToClass(type, req.body)
         const errors: ValidationError[] = await validate(dtoObject, { whitelist })
         if (errors.length) {
