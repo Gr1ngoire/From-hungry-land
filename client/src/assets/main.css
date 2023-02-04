@@ -1,0 +1,50 @@
+@import url(./base.css);
+
+/* flex-grow  */
+
+.flex-grow-4 {
+    flex-grow: 4;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+/* rounding */
+
+.rounded {
+    border-radius: 20px;
+}
+
+
+/* bg colors */
+
+
+.bg-cyan-green {
+    background-color: #02FF95;
+}
+
+.bg-grey {
+    background-color: #ACACAC;
+}
+/* buttons */
+
+.header-btn {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 1rem ;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-btn:hover {
+    color: #000000;
+}
+
+
+
+/* selects */
