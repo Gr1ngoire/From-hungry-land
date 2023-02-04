@@ -1,0 +1,22 @@
+@import "vue-select/dist/vue-select.css";
+
+:root {
+    --header-color: #E40060;
+    --bg-color: #F4EDE9;
+    --section-bg-color: #fff;
+
+    --search-bg-color: #979797;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+#app {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows:  auto 1fr auto;
+}
