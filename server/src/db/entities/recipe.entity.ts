@@ -1,9 +1,9 @@
 import {Column, Entity} from "typeorm";
 import {Abstract} from "./abstract/abstract.entity";
-import {RecipeDifficulty} from "../../common/enums/enums";
+import {DbTablesNamesEnum, RecipeDifficulty} from "../../common/enums/enums";
 
 
-@Entity("recipes")
+@Entity({name: DbTablesNamesEnum.RECIPES})
 export class Recipe extends Abstract{
 
 
