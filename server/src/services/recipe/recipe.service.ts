@@ -5,6 +5,7 @@ import {In, Like} from "typeorm";
 import {FindOptionsWhere} from "typeorm/find-options/FindOptionsWhere";
 import {RecipeQueryOptionType} from "@/common/types/types";
 import {recipeRepo} from "@/repositories/repositories";
+import {EntityNotFoundException} from "@/common/exceptions/entity/entity-not-found.exception";
 
 export class RecipeService{
     private readonly repo = recipeRepo
@@ -17,7 +18,7 @@ export class RecipeService{
         });
 
         if(!recipe){
-            throw new Error(`Recipe with id = ${id} does not exist in db`)
+            throw new EntityNotFoundException(`Recipe with id = ${id} does not exist in db`, id, 500)
         }
 
         return recipe;
