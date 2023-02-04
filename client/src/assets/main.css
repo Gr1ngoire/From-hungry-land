@@ -33,9 +33,26 @@
     background-color: #02FF95;
 }
 
+.bg-cyan-green:hover {
+    background-color: #00d77d;
+}
+
 .bg-grey {
     background-color: #ACACAC;
 }
+
+.bg-grey:hover {
+    background-color: #8b8b8b;
+}
+
+.bg-pink {
+    background-color: var(--header-color);
+}
+
+.bg-pink:hover {
+    background-color: #b9004a;
+}
+
 /* buttons */
 
 .header-btn {
