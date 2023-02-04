@@ -1,7 +1,7 @@
 import { dataSource } from "@/app-data-source";
 
 import { ProductRepository } from "./product/product.repository";
-import { ProductTagRepository } from "./productTag/productTag.repository";
+import { ProductTagRepository } from "./productTag/product-tag.repository";
 import {UserRepository} from "@/repositories/user/user.repository";
 import {RecipeRepository} from "@/repositories/recipe/recipe.repository";
 
