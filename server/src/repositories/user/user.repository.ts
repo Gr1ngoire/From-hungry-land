@@ -3,15 +3,16 @@ import {User} from "@/db/entities/user.entity";
 import {UserResponseDto, UserSignUpDto} from "@/common/types/types";
 
 class UserRepository {
-    constructor(private repository: Repository<User>) {}
+    constructor(private dbRepository: Repository<User>) {}
 
 
     public getById(id: number): Promise<null | UserResponseDto>{
-        return this.repository.findOne({
+        return this.dbRepository.findOne({
             where: {
                 id
             },
             select: {
+                id: true,
                 nickname: true,
                 email: true,
             },
@@ -21,15 +22,22 @@ class UserRepository {
         })
     }
     public getByEmail(email: string): Promise<null | UserResponseDto> {
-        return this.repository.findOne({
+        return this.dbRepository.findOne({
             where: {
                 email
             }
         })
     }
     public async create(userDto: UserSignUpDto): Promise<UserResponseDto> {
-        const toInsert = this.repository.create(userDto);
-        const createdUser = await this.repository.save(toInsert);
+
+        const userWithSameEmail = await this.getByEmail(userDto.email);
+
+        if (userWithSameEmail) {
+            throw new Error('User with such email already exists');
+        }
+
+        const newUser = this.dbRepository.create(userDto);
+        const createdUser = await this.dbRepository.save(newUser);
         return this.getById(createdUser.id);
     }
 }
