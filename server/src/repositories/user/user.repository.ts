@@ -1,6 +1,6 @@
 import {Repository} from "typeorm";
 import {User} from "@/db/entities/user.entity";
-import {UserResponseDto, UserSignUpDto} from "@/common/types/types";
+import {UserResponseDto, UserSignUpDto, UserWithPassword} from "@/common/types/types";
 
 class UserRepository {
     constructor(private dbRepository: Repository<User>) {}
@@ -21,10 +21,35 @@ class UserRepository {
             }
         })
     }
-    public getByEmail(email: string): Promise<null | UserResponseDto> {
+    public getByEmail(email: string): Promise<UserResponseDto | null> {
         return this.dbRepository.findOne({
             where: {
                 email
+            },
+            select: {
+                id: true,
+                nickname: true,
+                email: true
+            },
+            relations: {
+                role: true
+            }
+        })
+    }
+
+    public getByEmailWithPassword(email: string): Promise<UserWithPassword | null> {
+        return this.dbRepository.findOne({
+            where: {
+                email
+            },
+            select: {
+                id: true,
+                nickname: true,
+                email: true,
+                password: true,
+            },
+            relations: {
+                role: true
             }
         })
     }
