@@ -1,17 +1,26 @@
 import { productService } from "@/services/services";
-import { Request, Response } from "express-serve-static-core";
+import { Request, Response, NextFunction} from "express";
+import {Product} from "@/db/entities/product.entity";
 
 export class ProductController {
 
-  public getAll = async (req: Request, res: Response) => {
-    const products = await productService.getAll();
-    res.json(products);
+  public getAll = async (req: Request, res: Response, next:NextFunction) => {
+    try{
+      res.json(await productService.getAll())
+    }catch (e){
+      next(e)
+    }
   }
 
-  public async getByProductTagId(req: Request, res: Response) {
-    const products = await productService.getByProductTagId(
-      parseInt(req.params.id)
-    );
-    res.json(products);
+  public async getByProductTagId(req: Request<{id}>, res: Response<Product[]>, next:NextFunction) {
+    try {
+      const products = await productService.getByProductTagId(
+          parseInt(req.params.id)
+      );
+      res.json(products);
+    }catch (e){
+      next(e)
+    }
+
   }
 }

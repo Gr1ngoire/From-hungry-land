@@ -1,4 +1,5 @@
 import { Product } from "@/db/entities/product.entity";
+import {productTagService} from "@/services/services";
 import {productRepo} from "@/repositories/repositories";
 
 export class ProductService {
@@ -9,6 +10,7 @@ export class ProductService {
   };
 
   public async getByProductTagId(id: number): Promise<Product[]> {
+    await productTagService.get(id)
     return await this.repo.find({
       relations: ["productTag"],
       where: { productTag: { id } },
