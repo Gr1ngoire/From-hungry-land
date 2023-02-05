@@ -11,7 +11,7 @@ export class RecipeToProductEntity extends Abstract{
     @Column({
         default: 1
     })
-    quantity: Number
+    quantity: number
 
     @ManyToOne(type => Recipe, recipe => recipe.productRecipes)
     recipe: Recipe

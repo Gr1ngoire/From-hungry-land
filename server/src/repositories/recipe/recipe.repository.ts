@@ -16,7 +16,22 @@ export class RecipeRepository {
                 name: true,
                 instruction: true,
                 imgUrl: true,
-                difficult: true
+                difficult: true,
+                productRecipes: {
+                    id:true,
+                    quantity:true,
+                    product:{
+                        id:true,
+                        name:true,
+                        imgUrl:true,
+                    }
+                }
+
+            },
+            relations: {
+                productRecipes:{
+                    product:true
+                }
             },
             where: {
                 id
@@ -32,11 +47,6 @@ export class RecipeRepository {
                 instruction: true,
                 imgUrl: true,
                 difficult: true
-            },
-            relations: {
-                productRecipes:{
-                    product:true
-                }
             },
             take: take || 50,
             skip: skip || 0,
