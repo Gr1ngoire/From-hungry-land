@@ -1,6 +1,7 @@
 import {BcryptService, JwtService, UserService} from "@/services/services";
 import {type UserSignUpDto, type UserSignInResponseDto, type UserSignInDto, type UserResponseDto} from "@/common/types/types";
 import {InvalidCredentialsException} from "@/common/exceptions/user/invalid-credentials.exception";
+import {ValidationExceptionMessages} from "shared/common/enums/exception/validation/validation-exception-message.enum";
 
 type UserValidationParams = {
     email: string;
@@ -39,7 +40,7 @@ class AuthService {
         const userInDb = await this.userService.getByEmailWithPassword(email);
 
         if (!userInDb) {
-            throw new InvalidCredentialsException('Invalid email or password');
+            throw new InvalidCredentialsException(ValidationExceptionMessages.INVALID_EMAIL_OR_PASSWORD);
         }
 
         const passwordIsValid = await this.bcryptService.comparePasswords(
@@ -48,7 +49,7 @@ class AuthService {
         );
 
         if (!passwordIsValid) {
-            throw new InvalidCredentialsException('Invalid email or password');
+            throw new InvalidCredentialsException(ValidationExceptionMessages.INVALID_EMAIL_OR_PASSWORD);
         }
 
         const {id, nickname, email: userInDbEmail, role} = userInDb

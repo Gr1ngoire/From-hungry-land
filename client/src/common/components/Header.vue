@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav v-if="allowedToRender">
     <ul class="header-elements">
       <li class="header-elem">
         <button class="header-btn">
@@ -21,7 +21,9 @@
 </template>
 
 <script setup lang="ts">
+  import {AppRoutes} from "@/common/enums/enums";
 
+  const allowedToRender = window.location.pathname !== AppRoutes.SIGN_IN && window.location.pathname !== AppRoutes.SIGN_UP
 </script>
 
 <style scoped>
