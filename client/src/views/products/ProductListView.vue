@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import VueSelect from "vue-select";
-import { Button, Product } from "@/common/components/components";
+import { Button } from "@/common/components/components";
+import { Product } from '@/components/components'
 
 import { ref, reactive, onMounted } from "vue";
 import { useProductListStore } from "@/stores/productListStore.js";
@@ -100,7 +101,7 @@ const toggleDropdown = () => {
 </template>
 
 <style scoped>
-:deep() {
+>>> {
     --vs-border-radius: 20px;
     --vs-actions-padding: 4px 1rem 0;
     --vs-dropdown-option--active-bg: var(--header-color);

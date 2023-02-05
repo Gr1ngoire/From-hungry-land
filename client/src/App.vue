@@ -1,14 +1,17 @@
 <script setup lang="ts">
+import {Header} from "@/common/components/components";
 </script>
 
 <template>
   <header>
-    <Header></Header>
+    <Header/>
   </header>
 
   <main>
     <RouterView/>
   </main>
 
-  <footer></footer>
+  <footer>
+
+  </footer>
 </template>
