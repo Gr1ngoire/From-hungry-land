@@ -1,3 +1,5 @@
+@import "vue-select/dist/vue-select.css";
+
 :root {
     --header-color: #E40060;
     --bg-color: #F4EDE9;
