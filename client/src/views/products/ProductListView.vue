@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import VueSelect from "vue-select";
-import Button from "@/components/Button.vue";
-import Product from "@/components/Product.vue";
+import { Button, Product } from "@/common/components/components";
 
 import { ref, reactive, onMounted } from "vue";
 import { useProductListStore } from "@/stores/productListStore.js";
