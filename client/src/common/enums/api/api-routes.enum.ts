@@ -1,1 +1,1 @@
-export {ApiRoutes} from '../../../../../shared/common/enums/enums'
+export {ApiRoutes} from 'shared/common/enums/enums'
