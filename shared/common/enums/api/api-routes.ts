@@ -3,7 +3,9 @@ enum ApiRoutes {
     AUTH = "/auth",
     PRODUCTS = "/products",
     PRODUCT_TAGS = "/product-tags",
-    RECIPES = "/recipes"
+    RECIPES = "/recipes",
+
+    RECIPE = "/recipes/",
 }
 
 export {ApiRoutes}

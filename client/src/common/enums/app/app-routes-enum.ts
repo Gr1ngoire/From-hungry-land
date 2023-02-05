@@ -3,7 +3,8 @@ enum AppRoutes {
     SIGN_IN = "/signIn",
     SIGN_UP = "/signUp",
     PRODUCTS = '/products',
-    RECIPES = "/recipes"
+    RECIPES = "/recipes",
+    RECIPE = "/recipes/",
 }
 
 export {AppRoutes}
