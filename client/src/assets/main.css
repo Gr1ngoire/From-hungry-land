@@ -1,0 +1,82 @@
+@import url(./base.css);
+
+/* flex-grow  */
+
+.flex-grow-4 {
+    flex-grow: 4;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+/* rounding */
+
+.rounded {
+    border-radius: 20px;
+}
+
+/*wrappers*/
+
+.page-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.page-section {
+    background-color: var(--section-bg-color);
+}
+
+/* bg colors */
+
+.bg-cyan-green {
+    background-color: #02FF95;
+}
+
+.bg-cyan-green:hover {
+    background-color: #00d77d;
+}
+
+.bg-grey {
+    background-color: #ACACAC;
+}
+
+.bg-grey:hover {
+    background-color: #8b8b8b;
+}
+
+.bg-pink {
+    background-color: var(--header-color);
+}
+
+.bg-pink:hover {
+    background-color: #b9004a;
+}
+
+/* buttons */
+
+.header-btn {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 1rem ;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-btn:hover {
+    color: #000000;
+}
+
+
+
+/* selects */
+
+/* inputs */
+
+input {
+    outline: none;
+}
