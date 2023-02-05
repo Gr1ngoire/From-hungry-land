@@ -2,9 +2,13 @@
   <nav v-if="allowedToRender">
     <ul class="header-elements">
       <li class="header-elem">
-        <button class="header-btn">
+        <button class="header-btn" @click="toggleNavMenu">
           <font-awesome-icon :icon="['fas', 'bars']" />
         </button>
+        <Transition name="slide-fade">
+          <NavMenu @close="handleClickOutside" v-if="isNavMenuOpen">
+          </NavMenu>
+        </Transition>
       </li>
       <li class="header-elem">
         <p>Page Name</p>
@@ -21,12 +25,34 @@
 </template>
 
 <script setup lang="ts">
-  import {AppRoutes} from "@/common/enums/enums";
+import { AppRoutes } from "@/common/enums/enums";
+import NavMenu from "./NavMenu.vue";
+import { ref } from "vue";
 
-  const allowedToRender = window.location.pathname !== AppRoutes.SIGN_IN && window.location.pathname !== AppRoutes.SIGN_UP
+const allowedToRender = window.location.pathname !== AppRoutes.SIGN_IN && window.location.pathname !== AppRoutes.SIGN_UP
+const isNavMenuOpen = ref(false);
+
+const toggleNavMenu = () => {
+  isNavMenuOpen.value = !isNavMenuOpen.value;
+}
+
+const handleClickOutside = () => {
+  isNavMenuOpen.value = false;
+}
+
+
 </script>
 
 <style scoped>
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3rem;
+  z-index: 1;
+}
+
 .header-elements {
   display: flex;
   justify-content: space-between;
@@ -48,4 +74,19 @@ a {
   color: white;
   text-decoration: none;
 }
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
 </style>
