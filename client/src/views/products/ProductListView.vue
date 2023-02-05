@@ -3,41 +3,45 @@ import VueSelect from "vue-select";
 import Button from "@/components/Button.vue";
 import Product from "@/components/Product.vue";
 
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
+import { useProductListStore } from "@/stores/productListStore.js";
+import type { ProductTagDTO, ProductDTO } from "@/common/types/types";
+
+const productsStore = useProductListStore();
+
+const filters = ref([] as string[]);
+const options = ref([] as ProductDTO[]);
+
+onMounted(() => {
+    productsStore.fetchProducts().then(() => {
+        options.value = [...productsStore.getProducts];
+    });
+    productsStore.fetchProductTags().then(() => {
+        filters.value = [...productsStore.getProductTags]
+    });
+    
+});
 
 const selected = ref({
     name: "",
     imgUrl: "",
-    tag: "",
+    productTag: {
+        name: "",
+    },
 });
-const options = reactive(["one", "two", "three"]);
-const filters = reactive([
-    "filter1",
-    "filter2",
-    "fer3",
-    "filtsdaer2",
-    "filter3",
-    "filter2",
-    "filter3",
-]);
 
-const chosenFilters = reactive([""].splice(0, 0));
 
-const products = ref([
-    {
-        name: "Bread",
-        imgUrl: "https://www.themealdb.com/images/ingredients/Bread.png",
-        tag: "Flour products",
-    }
-])
+
+const chosenFilters = reactive([] as string[]);
+
 
 const addFilter = (filter: string) => {
     chosenFilters.push(filter);
-    filters.splice(filters.indexOf(filter), 1);
+    filters.value.splice(filters.value.indexOf(filter), 1);
 }
 
 const removeFilter = (filter: string) => {
-    filters.push(filter);
+    filters.value.push(filter);
     chosenFilters.splice(chosenFilters.indexOf(filter), 1);
 }
 
@@ -54,20 +58,20 @@ const removeFilter = (filter: string) => {
             </div>
             <p class="caption-text">Your Products</p>
             <div class="products-wrapper">
-                <Product v-for="product in products" :name="product.name" :image="product.imgUrl" :alt="product.name"
-                    :tag="product.tag">
+                <Product v-for="product in productsStore.getProducts" :name="product.name" :image="product.imgUrl"
+                    :alt="product.name" :tag="product.productTag.name">
                 </Product>
             </div>
         </div>
         <div class="page-section rounded">
             <p class="caption-text">Filters</p>
             <div class="filters-section">
-                <Button v-for="filter in chosenFilters" :text="filter" class="flex-grow-1" bgColor="bg-pink" 
-                @click="removeFilter(filter)"/>
+                <Button v-for="filter in chosenFilters" :text="filter" class="flex-grow-1" bgColor="bg-pink"
+                    @click="removeFilter(filter)" />
             </div>
             <div class="filters-section">
-                <Button v-for="filter in filters" :text="filter" class="flex-grow-1" bgColor="bg-grey" 
-                @click="addFilter(filter)"/>
+                <Button v-for="filter in filters" :text="filter" class="flex-grow-1" bgColor="bg-grey"
+                    @click="addFilter(filter)" />
             </div>
         </div>
     </div>
@@ -123,6 +127,7 @@ const removeFilter = (filter: string) => {
     display: flex;
     flex-wrap: wrap;
     gap: 0.3rem;
+    overflow-y: hidden;
 }
 
 /* ect */
