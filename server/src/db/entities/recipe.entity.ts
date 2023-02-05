@@ -1,12 +1,8 @@
-import {Column, Entity} from "typeorm";
+import {Column, Entity, OneToMany} from "typeorm";
 import {Abstract} from "./abstract/abstract.entity";
-import {DbTablesNamesEnum} from "../../common/enums/enums";
+import {DbTablesNamesEnum, RecipeDifficulty} from "../../common/enums/enums";
+import {RecipeToProductEntity} from "../entities/recipe-to-product.entity";
 
-enum RecipeDifficulty{
-    EASY = "easy",
-    MEDIUM = "medium",
-    HARD = "hard",
-}
 
 @Entity({name: DbTablesNamesEnum.RECIPES})
 export class Recipe extends Abstract{
@@ -28,4 +24,7 @@ export class Recipe extends Abstract{
         enum:RecipeDifficulty,
     })
     difficult: RecipeDifficulty
+
+    @OneToMany(type => RecipeToProductEntity, productRecipe =>productRecipe.recipe)
+    productRecipes: RecipeToProductEntity[]
 }

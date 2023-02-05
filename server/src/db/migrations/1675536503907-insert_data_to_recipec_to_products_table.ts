@@ -1,0 +1,61 @@
+import { MigrationInterface, QueryRunner } from "typeorm"
+
+export class insertDataToRecipecToProductsTable1675536503907 implements MigrationInterface {
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Lemon drizzle cake'),(SELECT id FROM product WHERE name='Butter'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Lemon drizzle cake'),(SELECT id FROM product WHERE name='Sugar'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(4,(SELECT id FROM recipes WHERE name='Lemon drizzle cake'),(SELECT id FROM product WHERE name='Сhicken egg'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Lemon drizzle cake'),(SELECT id FROM product WHERE name='Lemon'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Lemon drizzle cake'),(SELECT id FROM product WHERE name='Flour'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chicken & chorizo'),(SELECT id FROM product WHERE name='Olive oil'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(2,(SELECT id FROM recipes WHERE name='Chicken & chorizo'),(SELECT id FROM product WHERE name='Chicken'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chicken & chorizo'),(SELECT id FROM product WHERE name='Onions'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chicken & chorizo'),(SELECT id FROM product WHERE name='Bell peppers'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(2,(SELECT id FROM recipes WHERE name='Chicken & chorizo'),(SELECT id FROM product WHERE name='Garlic'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chicken & chorizo'),(SELECT id FROM product WHERE name='Rice'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chicken & chorizo'),(SELECT id FROM product WHERE name='Tomato'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate brownies'),(SELECT id FROM product WHERE name='Butter'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate brownies'),(SELECT id FROM product WHERE name='Dark chocolate'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate brownies'),(SELECT id FROM product WHERE name='Flour'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate brownies'),(SELECT id FROM product WHERE name='Powder'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate brownies'),(SELECT id FROM product WHERE name='White chocolate'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate brownies'),(SELECT id FROM product WHERE name='Milk chocolate'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(3,(SELECT id FROM recipes WHERE name='Chocolate brownies'),(SELECT id FROM product WHERE name='Сhicken egg'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate brownies'),(SELECT id FROM product WHERE name='Sugar'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chorizo & mozzarella'),(SELECT id FROM product WHERE name='Olive oil'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chorizo & mozzarella'),(SELECT id FROM product WHERE name='Onions'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(2,(SELECT id FROM recipes WHERE name='Chorizo & mozzarella'),(SELECT id FROM product WHERE name='Garlic'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(2,(SELECT id FROM recipes WHERE name='Chorizo & mozzarella'),(SELECT id FROM product WHERE name='Tomato'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chorizo & mozzarella'),(SELECT id FROM product WHERE name='Sugar'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(2,(SELECT id FROM recipes WHERE name='Chorizo & mozzarella'),(SELECT id FROM product WHERE name='Mozzarella'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chorizo & mozzarella'),(SELECT id FROM product WHERE name='Salad'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate fudge cake'),(SELECT id FROM product WHERE name='Sunflower oil'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate fudge cake'),(SELECT id FROM product WHERE name='Flour'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate fudge cake'),(SELECT id FROM product WHERE name='Sugar'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(2,(SELECT id FROM recipes WHERE name='Chocolate fudge cake'),(SELECT id FROM product WHERE name='Сhicken egg'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate fudge cake'),(SELECT id FROM product WHERE name='Powder'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate fudge cake'),(SELECT id FROM product WHERE name='Milk'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Chocolate fudge cake'),(SELECT id FROM product WHERE name='Butter'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Pasta with tomatoes'),(SELECT id FROM product WHERE name='Pasta'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(4,(SELECT id FROM recipes WHERE name='Pasta with tomatoes'),(SELECT id FROM product WHERE name='Tomato'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Pasta with tomatoes'),(SELECT id FROM product WHERE name='Salt'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Ukraine hamburgers'),(SELECT id FROM product WHERE name='White bread'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Ukraine hamburgers'),(SELECT id FROM product WHERE name='Butter'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(2,(SELECT id FROM recipes WHERE name='Ukraine hamburgers'),(SELECT id FROM product WHERE name='Cucumber'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Ukraine hamburgers'),(SELECT id FROM product WHERE name='Salad'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Fruit salad'),(SELECT id FROM product WHERE name='Banana'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Fruit salad'),(SELECT id FROM product WHERE name='Apple'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(10,(SELECT id FROM recipes WHERE name='Fruit salad'),(SELECT id FROM product WHERE name='Blueberry'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Fruit salad'),(SELECT id FROM product WHERE name='Ice cream'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Fruit salad'),(SELECT id FROM product WHERE name='Lemon'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Milk with butter and honey'),(SELECT id FROM product WHERE name='Milk'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Milk with butter and honey'),(SELECT id FROM product WHERE name='Butter'))`)
+        await queryRunner.query(`INSERT INTO recipes_to_products(quantity, "recipeId", "productId") VALUES(1,(SELECT id FROM recipes WHERE name='Milk with butter and honey'),(SELECT id FROM product WHERE name='Honey'))`)
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`DELETE FROM recipes_to_products`)
+    }
+
+}
