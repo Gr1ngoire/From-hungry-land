@@ -36,6 +36,7 @@ const props = defineProps({
 <style scoped>
 .product-btn {
     display: flex;
+    justify-content: space-around;
     align-items: center;
     gap: 1rem;
     background-color: var(--section-color);
