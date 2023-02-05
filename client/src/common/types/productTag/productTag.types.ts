@@ -1,1 +1,0 @@
-export type { ProductTagDTO } from './productTagDTO.type'

@@ -1,2 +1,2 @@
-export type {ProductTagDTO} from './productTag/productTag.types'
-export type {ProductDTO} from './product/product.types'
+export type {ProductTagDTO} from 'shared/common/types/productTag/productTag.types'
+export type {ProductDTO} from 'shared/common/types/product/product.types'
