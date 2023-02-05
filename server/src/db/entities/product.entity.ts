@@ -5,7 +5,7 @@ import {DbTablesNamesEnum} from "../../common/enums/enums";
 import {RecipeToProductEntity} from "../entities/recipe-to-product.entity";
 
 @Entity({name: DbTablesNamesEnum.PRODUCTS})
-export class Product extends Abstract{
+export class Product extends Abstract {
 
     @Column()
     name: string
