@@ -112,8 +112,6 @@ const toggleDropdown = () => {
 .page-wrapper {
     grid-template-columns: 2fr 1fr;
     gap: 3rem;
-    padding: 3rem 3rem 0 3rem;
-    min-height: 30rem;
 }
 
 .page-section {
