@@ -1,5 +1,16 @@
 @import url(./base.css);
 
+/* h1-h6 */
+
+h1 {
+    font-size: 3rem;
+    background: linear-gradient(180deg, #FF005C 0%, #A70050 73.96%, #AD0051 99.99%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
 /* flex-grow  */
 
 .flex-grow-4 {
@@ -21,13 +32,20 @@
 .page-wrapper {
     display: grid;
     grid-template-columns: 1fr;
+    padding: 3rem 3rem 0 3rem;
+    min-height: 30rem;
 }
 
 .page-section {
+    padding: 3rem 3rem 0 3rem;
     background-color: var(--section-bg-color);
 }
 
 /* bg colors */
+
+.transparent {
+    background-color: transparent;
+}
 
 .bg-cyan-green {
     background-color: #02FF95;
