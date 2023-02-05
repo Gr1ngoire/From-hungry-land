@@ -76,7 +76,7 @@ const ingredients = ref([{ name: "balls", amount: '2' }, { name: "eggs", amount:
 }
 
 .recipe-img {
-    width: 100%;
+    width: 80%;
     aspect-ratio: 3/2;
     object-fit: cover;
     margin-right: 2rem;
