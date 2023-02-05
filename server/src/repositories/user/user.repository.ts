@@ -4,6 +4,7 @@ import {UserResponseDto, UserSignUpDto, UserWithPassword} from "@/common/types/t
 import {AlreadyExistsException} from "@/common/exceptions/user/already-exists.exception";
 import {RoleRepository} from "@/repositories/role/role.repository";
 import {Roles} from "shared/common/enums/role/roles.enum";
+import {ValidationExceptionMessages} from "shared/common/enums/exception/validation/validation-exception-message.enum";
 
 class UserRepository {
     constructor(private dbUserRepository: Repository<User>, private roleRepository: RoleRepository) {}
@@ -61,7 +62,7 @@ class UserRepository {
         const userWithSameEmail = await this.getByEmail(userDto.email);
 
         if (userWithSameEmail) {
-            throw new AlreadyExistsException('User with such email already exists');
+            throw new AlreadyExistsException(ValidationExceptionMessages.USER_WITH_SUCH_EMAIL_ALREADY_EXISTS);
         }
 
         const role = await this.roleRepository.getIdByName(Roles.USER);

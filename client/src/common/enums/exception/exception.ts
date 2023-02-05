@@ -1,1 +1,1 @@
-export { ValidationExceptionMessages } from "./validation/validation";
+export { ValidationExceptionMessages } from "shared/common/enums/enums";
