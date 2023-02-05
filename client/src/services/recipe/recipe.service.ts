@@ -1,5 +1,6 @@
 import {axios} from "../axios/axios";
 import {AppRoutes} from "@/common/enums/enums";
+import type {RecipeQueryOptionType} from "@/common/types/types";
 
 
 export class RecipeService {
@@ -8,7 +9,7 @@ export class RecipeService {
         return data
     }
 
-    public async getRecipes(options: object) {
+    public async getRecipes(options: RecipeQueryOptionType) {
         const {data} = await axios.get(AppRoutes.RECIPES)
         return data
     }
