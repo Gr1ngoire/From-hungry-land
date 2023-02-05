@@ -4,12 +4,14 @@ import {Header} from "@/common/components/components";
 
 <template>
   <header>
-    <Header></Header>
+    <Header/>
   </header>
 
   <main>
-    <router-view> </router-view>
+    <RouterView/>
   </main>
 
-  <footer></footer>
+  <footer>
+
+  </footer>
 </template>

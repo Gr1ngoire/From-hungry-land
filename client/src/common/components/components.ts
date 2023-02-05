@@ -1,9 +1,9 @@
 import Button from './Button.vue';
 import Header from './Header.vue';
-import Product from './Product.vue';
+import Input from './input/input.vue'
 
 export {
     Button,
     Header,
-    Product
+    Input
 };

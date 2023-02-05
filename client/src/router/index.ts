@@ -1,22 +1,28 @@
-import { createRouter, createWebHistory } from "vue-router";
-import { ClientRoutes } from "@/common/enums/enums";
+import { createRouter, createWebHistory } from 'vue-router'
+import {SignInView, SignUpView} from "@/views/views";
+import {pathSlashStripper} from "./helpers/helpers";
+import {AppRoutes} from "@/common/enums/enums";
 import { ProductListView } from "@/views/views";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    /* {
-      path: '/example',
-      name: 'example',
-      component: ExampleComponent
-    }, */
-
     {
-      path: ClientRoutes.PRODUCTS,
+      path: AppRoutes.SIGN_UP,
+      name: pathSlashStripper(AppRoutes.SIGN_UP),
+      component: SignUpView
+    },
+    {
+      path: AppRoutes.SIGN_IN,
+      name: pathSlashStripper(AppRoutes.SIGN_IN),
+      component: SignInView
+    },
+    {
+      path: AppRoutes.PRODUCTS,
       name: "products",
       component: ProductListView,
     },
-  ],
-});
+  ]
+})
 
-export default router;
+export default router

@@ -1,5 +1,5 @@
 <template>
-  <button  @click="handleClick" :class="'btn ' + bgColor">
+  <button  @click="handleClick" :type="type || 'click'" :class="'btn ' + bgColor">
     <font-awesome-icon v-if="icon" :icon="icon" />
     <span>{{ text }}</span>
   </button>
@@ -7,8 +7,7 @@
 
 <script setup lang="ts">
 
-
-const props = defineProps({
+defineProps({
   text: {
     type: String,
     required: true,
@@ -20,6 +19,10 @@ const props = defineProps({
   icon: {
     type: Array,
     required: false,
+  },
+  type: {
+    type: String,
+    required: false
   }
 });
 
@@ -28,11 +31,6 @@ const emit = defineEmits(["click"]);
 const handleClick = () => {
   emit("click");
 };
-
-
-
-
-
 
 </script>
 
@@ -49,6 +47,10 @@ const handleClick = () => {
   padding: 0.5rem 1rem 0.5rem 1rem;
   color: white;
   transition: .3s;
+}
+
+.btn:hover {
+  cursor: pointer;
 }
 
 </style>
