@@ -82,7 +82,7 @@ const toggleDropdown = () => {
             <p class="caption-text">Your Products</p>
             <div class="products-wrapper">
                 <Product v-for="product in productsStore.getProducts" :name="product.name" :image="product.imgUrl"
-                    :alt="product.name" :tag="product.productTag.name">
+                    :alt="product.name" :tag="product.productTag.name" class="flex-grow-1">
                 </Product>
             </div>
         </div>
@@ -101,7 +101,7 @@ const toggleDropdown = () => {
 </template>
 
 <style scoped>
->>> {
+:deep() {
     --vs-border-radius: 20px;
     --vs-actions-padding: 4px 1rem 0;
     --vs-dropdown-option--active-bg: var(--header-color);
@@ -131,8 +131,9 @@ const toggleDropdown = () => {
 }
 
 .products-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    overflow-x: scroll;
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -147,10 +148,12 @@ const toggleDropdown = () => {
 
 .filters-section {
     padding-bottom: .3rem;
+    min-width: 10rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.3rem;
     overflow-y: hidden;
+    overflow-x: scroll;
 }
 
 .filters-dropdown {
