@@ -1,0 +1,1 @@
+export type {RecipeDtoType} from "./recipe.dto.type"
