@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import {computed} from 'vue'
-import './styles.css';
 
 type InputType = "text" | "number" | "password" | "email";
 

@@ -6,7 +6,6 @@ import type {UserSignUpDto} from "@/common/types/types";
 import {userSignUp as signUpValidator} from "@/validators/validators";
 import {Button, Input} from "@/common/components/components";
 
-import './styles.css'
 import {AppRoutes} from "@/common/enums/enums";
 
 const router = useRouter();
@@ -94,7 +93,7 @@ handleSignUpValidation(signUpFormState);
         />
       </div>
       <div class="signUpActionButtonsWrapper">
-        <Button bg-color="bg-pink" text="Sign Up" type="submit" />
+        <Button bg-color="bg-pink" text="Sign Up" type="submit"/>
       </div>
       <p class="signUpToSignInSwitchParagraph">
         Do you already have an account?
@@ -105,3 +104,58 @@ handleSignUpValidation(signUpFormState);
     </div>
   </form>
 </template>
+
+<style scoped>
+.signUpForm {
+  width: 32%;
+  min-width: 350px;
+  background: rgba(172, 172, 171, 0.37);
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  border-radius: 37px;
+}
+
+.registerBanner {
+  width: 100%;
+  height: 60px;
+  background: var(--header-color);
+  border-top-left-radius: 37px;
+  border-top-right-radius: 37px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.registerBanner > p {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.signUpActionSectionWrapper {
+  width: 90%;
+}
+
+.signUpInputWrapper label {
+  color: var(--header-color);
+  margin-top: 15px;
+}
+
+.signUpActionButtonsWrapper {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.signUpToSignInSwitchParagraph {
+  margin: 20px 0;
+  text-align: center;
+  color: var(--header-color);
+}
+
+.switchLink {
+  color: var(--header-color);
+}
+
+</style>
