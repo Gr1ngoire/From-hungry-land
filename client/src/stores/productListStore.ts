@@ -2,9 +2,10 @@ import type { ProductDTO, ProductTagDTO } from '@/common/types/types'
 import { ProductService, ProductTagService } from '@/services/services'
 import { defineStore } from 'pinia'
 import { ref, computed, type ComputedRef } from 'vue'
+import { StoreNames } from '@/common/enums/enums'
 
 
-export const useProductListStore = defineStore('products', () => {
+export const useProductListStore = defineStore(StoreNames.PRODUCTS, () => {
 
     const products = ref([] as ProductDTO[])
     const productTags = ref([] as ProductTagDTO[])
