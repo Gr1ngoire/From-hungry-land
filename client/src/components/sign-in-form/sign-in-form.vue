@@ -4,10 +4,10 @@ import {useRouter} from 'vue-router'
 import type {ValidationError} from "@/exceptions/exceptions";
 import type {UserSignInDto} from "@/common/types/types";
 import {userSignIn as signInValidator} from "@/validators/validators";
-import {Input} from "@/common/components/components";
+import {Button, Input} from "@/common/components/components";
 
-import './styles.css'
 import {AppRoutes} from "@/common/enums/enums";
+import './styles.css'
 
 const router = useRouter();
 
@@ -83,7 +83,7 @@ handleSignUpValidation(signInFormState);
         />
       </div>
       <div class="signInActionButtonsWrapper">
-        <button type="submit">Sign In</button>
+        <Button bg-color="bg-pink" text="Sign In" type="submit" />
       </div>
       <p class="signInToSignInSwitchParagraph">
         Do you already have an account?

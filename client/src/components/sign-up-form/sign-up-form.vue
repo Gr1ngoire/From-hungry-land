@@ -4,7 +4,7 @@ import {useRouter} from 'vue-router'
 import type {ValidationError} from "@/exceptions/exceptions";
 import type {UserSignUpDto} from "@/common/types/types";
 import {userSignUp as signUpValidator} from "@/validators/validators";
-import {Input} from "@/common/components/components";
+import {Button, Input} from "@/common/components/components";
 
 import './styles.css'
 import {AppRoutes} from "@/common/enums/enums";
@@ -94,7 +94,7 @@ handleSignUpValidation(signUpFormState);
         />
       </div>
       <div class="signUpActionButtonsWrapper">
-        <button type="submit">Sign Up</button>
+        <Button bg-color="bg-pink" text="Sign Up" type="submit" />
       </div>
       <p class="signUpToSignInSwitchParagraph">
         Do you already have an account?
