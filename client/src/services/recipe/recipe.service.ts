@@ -3,7 +3,7 @@ import {AppRoutes} from "@/common/enums/enums";
 import type {RecipeQueryOptionType} from "@/common/types/types";
 
 
-export class RecipeService {
+class RecipeService {
     public async getRecipe(id: number) {
         const {data} = await axios.get(AppRoutes.RECIPE + id)
         return data
@@ -14,3 +14,5 @@ export class RecipeService {
         return data
     }
 }
+
+export const recipeService = new RecipeService()
