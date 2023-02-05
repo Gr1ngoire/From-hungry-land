@@ -3,6 +3,7 @@ import {SignInView, SignUpView} from "@/views/views";
 import {pathSlashStripper} from "./helpers/helpers";
 import {AppRoutes} from "@/common/enums/enums";
 import { ProductListView } from "@/views/views";
+import { SingleRecipeViewVue } from "@/views/views";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,11 @@ const router = createRouter({
       path: AppRoutes.PRODUCTS,
       name: "products",
       component: ProductListView,
+    },
+    {
+      path: AppRoutes.RECIPES_SINGLE,
+      name: pathSlashStripper(AppRoutes.RECIPES_SINGLE),
+      component: SingleRecipeViewVue,
     },
   ]
 })
