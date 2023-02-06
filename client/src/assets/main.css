@@ -100,3 +100,37 @@ h1 {
 input {
     outline: none;
 }
+
+/* main */
+
+main {
+    flex: 1 1 auto;
+}
+/* loading */
+
+.loading-page {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loading-anim {
+    width: 50px;
+    height: 50px;
+    border: 10px solid transparent;
+    border-top: 10px solid var(--header-color);
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

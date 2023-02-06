@@ -1,14 +1,15 @@
 import {Column, Entity, OneToMany} from "typeorm";
 import {Abstract} from "./abstract/abstract.entity";
-import {DbTablesNamesEnum} from "../../common/enums/enums";
 import {RecipeToProductEntity} from "../entities/recipe-to-product.entity";
-export enum RecipeDifficulty{
+export enum RecipeDifficulty {
     EASY = "easy",
     MEDIUM = "medium",
     HARD = "hard",
 }
 
-@Entity({name: DbTablesNamesEnum.RECIPES})
+const tableName = 'recipes'
+
+@Entity({name: tableName})
 export class Recipe extends Abstract{
 
 

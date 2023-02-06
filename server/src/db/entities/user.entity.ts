@@ -1,10 +1,11 @@
 import {Entity, Column, JoinColumn, JoinTable, ManyToOne, ManyToMany} from "typeorm";
-import {DbTablesNamesEnum} from "../../common/enums/enums";
 import {Abstract} from "./abstract/abstract.entity";
 import {Role} from './role.entity'
 import {Product} from "./product.entity";
 
-@Entity({name: DbTablesNamesEnum.USERS})
+const tableName = 'users'
+
+@Entity({name: tableName})
 class User extends Abstract {
     @Column()
     nickname: string
