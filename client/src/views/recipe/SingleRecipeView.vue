@@ -33,7 +33,8 @@ onBeforeRouteLeave(() => {
                     <div class="recipe-info">
                         <h1>{{ recipe.name }}</h1>
                         <span class="underline"></span>
-                        <p>Difficulty: <span class="diff-color"> {{ recipe.difficult }}</span></p>
+                        <p>Difficulty: <span :class="`diff-color-${recipe.difficult}`"> {{ recipe.difficult }}</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -102,8 +103,17 @@ onBeforeRouteLeave(() => {
     word-break: break-word;
 }
 
-.diff-color {
+.diff-color-hard {
     color: #ff0000;
+}
+
+
+.diff-color-medium {
+    color: #ff9900;
+}
+
+.diff-color-easy {
+    color: #00ff00;
 }
 
 .ingredients-section {
