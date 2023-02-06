@@ -4,7 +4,7 @@ enum AppRoutes {
     SIGN_UP = "/signUp",
     PRODUCTS = '/products',
     RECIPES = "/recipes",
-    RECIPE = "/recipes/",
+    RECIPES_SINGLE = '/recipes/:id',
 }
 
 export {AppRoutes}
