@@ -11,7 +11,7 @@ axiosService.interceptors.request.use((config: InternalAxiosRequestConfig) => {
     const userToken = localStorageService.getToken();
 
     const DEFAULT_TOKEN_FORMAT = 'Bearer';
-    config.headers.setAuthorization(`${DEFAULT_TOKEN_FORMAT} ${'assssssssa'}${userToken}`);
+    config.headers.setAuthorization(`${DEFAULT_TOKEN_FORMAT} ${userToken}`);
 
     return config
 })

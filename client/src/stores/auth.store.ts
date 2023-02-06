@@ -13,7 +13,7 @@ type CurrentUserState = {
 
 const useAuthStore = defineStore(StoreNames.AUTH, () => {
 
-    const currentUserData = ref<UserResponseDto>();
+    const currentUserData = ref<CurrentUserState>();
 
     const authService: AuthService = new AuthService();
     const localStorageService: LocalStorageService = new LocalStorageService();
