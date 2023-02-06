@@ -67,12 +67,28 @@ watch(query, (query, prevQuery) =>{
 .list__items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  height: 75vh;
+  overflow: auto;
+  margin: 0 auto;
+}
+
+.list__search {
+  margin-bottom: 25px;
+}
+
+.list__search input {
+  width: 97%;
+  height: 30px;
+  border-radius: 10px;
+  padding: 2px 10px;
+  font-size: 1.3rem;
+  color: #b9004a;
 }
 
 .list__item {
   flex: 1 1 auto;
-  margin: 0 13px 30px 13px;
+  margin: 5px 13px 20px 13px;
+  padding: -5px -13px -20px -13px;
 
 }
 
@@ -80,19 +96,9 @@ watch(query, (query, prevQuery) =>{
   padding: 5px;
 }
 
-.list__search {
-  margin-bottom: 25px;
 
-}
 
-.list__search input {
-  width: 100%;
-  height: 30px;
-  border-radius: 10px;
-  padding: 2px 10px;
-  font-size: 1.3rem;
-  color: #b9004a;
-}
+
 
 h2 {
   margin: 0;
