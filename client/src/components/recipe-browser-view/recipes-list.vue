@@ -41,7 +41,6 @@ const toggle = () =>{
         />
       </div>
     </div>
-
     <div class="list__content">
       <div class="list__search">
         <input type="text" v-model.trim="query"/>
