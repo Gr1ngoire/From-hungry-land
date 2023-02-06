@@ -1,15 +1,15 @@
 <template>
   <div v-if="allowedToRender" class="footerWrapper">
-    <hr class="separator"/>
+    <hr class="separator" />
     <div class="footer">
       <div class="links">
         <p class="linksHeading">
           Follow us:
         </p>
         <div class="linksSection">
-          <font-awesome-icon class="linkIcon" icon="fa-brands fa-telegram" />
-          <font-awesome-icon class="linkIcon" icon="fa-brands fa-instagram" />
-          <font-awesome-icon class="linkIcon" icon="fa-brands fa-facebook" />
+          <font-awesome-icon class="linkIcon telegram" icon="fa-brands fa-telegram" />
+          <font-awesome-icon class="linkIcon instagram" icon="fa-brands fa-instagram" />
+          <font-awesome-icon class="linkIcon facebook" icon="fa-brands fa-facebook" />
         </div>
       </div>
       <div class="info">
@@ -26,7 +26,7 @@ import { AppRoutes } from "@/common/enums/enums";
 import { ref } from "vue";
 import router from '@/router/index'
 
-const allowedToRender = ref<boolean>( false)
+const allowedToRender = ref<boolean>(false)
 
 router.isReady().then(() => {
   const route = router.currentRoute.value.path
@@ -35,7 +35,6 @@ router.isReady().then(() => {
 </script>
 
 <style scoped>
-
 .footerWrapper {
   margin-top: 20px;
 }
@@ -50,40 +49,61 @@ router.isReady().then(() => {
   background: #F4E9F1;
   display: flex;
   justify-content: space-between;
-  padding: 5px;
+  align-items: center;
+  padding: .5rem 1rem .5rem 1rem;
 }
 
 .links {
-  width: 25%;
   display: flex;
   justify-content: center;
 }
 
 .linksHeading {
-  font-size: 1.25rem;
   text-align: end;
+  margin-right: .5rem;
 }
 
 .linksSection {
-  width: 50%;
   display: flex;
-  justify-content: space-evenly;
+  gap: .5rem;
   align-items: center;
 }
 
 .linkIcon {
-  font-size: 1.75rem;
   cursor: pointer;
+  font-size: 1.5rem;
 }
 
 .info {
-  width: 30%;
   display: flex;
-  justify-content: space-evenly;
+  gap: 1.5rem;
 }
 
 .infoParagraph {
-  font-size: 1.25rem;
+  color: #DE00A0;
 }
 
+.telegram:hover {
+  color: #0088CC;
+}
+
+.instagram:hover {
+  color: #E1306C;
+}
+
+.facebook:hover {
+  color: #3B5998;
+}
+
+
+@media (max-width: 768px) {
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .infoParagraph {
+    text-align: center;
+  }
+}
 </style>
