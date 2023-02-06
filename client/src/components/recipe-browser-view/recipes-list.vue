@@ -9,7 +9,6 @@ const query = ref<string>("")
 watch(query, (query, prevQuery) => {
   recipeStore.setSearchQuery(query)
   recipeStore.fetchRecipes()
-  console.log(1)
 })
 // let options = {
 //   root: document.querySelector('#scrollArea'),
@@ -31,7 +30,7 @@ watch(query, (query, prevQuery) => {
         <h2>Browse recipes that you want :)</h2>
       </div>
       <div class="list__logo">
-        <img src="https://cdn-icons-png.flaticon.com/512/2005/2005779.png" alt="list__logo">
+        <font-awesome-icon :icon="['fas', 'book']" size="4x" style="color: gray"/>
       </div>
     </div>
     <div class="list__content">
