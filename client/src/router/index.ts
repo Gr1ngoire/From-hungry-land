@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import {SignInView, SignUpView} from "@/views/views";
+import {SignInView, SignUpView, ProductListView, RecipeBrowserView} from "@/views/views";
 import {pathSlashStripper} from "./helpers/helpers";
 import {AppRoutes} from "@/common/enums/enums";
-import { ProductListView } from "@/views/views";
 import { SingleRecipeViewVue } from "@/views/views";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +28,12 @@ const router = createRouter({
       name: pathSlashStripper(AppRoutes.RECIPES_SINGLE),
       component: SingleRecipeViewVue,
     },
+    
+    {
+      path: AppRoutes.RECIPES,
+      name: pathSlashStripper(AppRoutes.RECIPES),
+      component: RecipeBrowserView
+    }
   ]
 })
 

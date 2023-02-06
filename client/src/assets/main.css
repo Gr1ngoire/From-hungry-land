@@ -32,9 +32,11 @@ h1 {
 .page-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    padding: 3rem 3rem 0 3rem;
+    padding: 3em 3rem 0 3rem;
     min-height: 30rem;
 }
+
+
 
 .page-section {
     padding: 3rem 3rem 0 3rem;

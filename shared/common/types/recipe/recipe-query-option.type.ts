@@ -1,4 +1,5 @@
-import {RecipeDifficulty} from "../../enums/enums";
+import type {RecipeDifficulty} from "../../enums/enums";
+
 
 export type RecipeQueryOptionType = {
     take?:number,

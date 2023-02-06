@@ -3,6 +3,7 @@ enum AppRoutes {
     SIGN_IN = "/signIn",
     SIGN_UP = "/signUp",
     PRODUCTS = '/products',
+    RECIPES = "/recipes",
     RECIPES_SINGLE = '/recipes/:id',
 }
 

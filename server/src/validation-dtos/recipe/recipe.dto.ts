@@ -1,7 +1,5 @@
 import {IsEnum, IsFQDN, IsInt, IsNotEmpty, IsString, Min} from "class-validator";
-enum Temp{
-    NAME
-}
+import {RecipeDifficulty} from "@/common/enums/enums";
 export class RecipeDto{
     @IsInt()
     @Min(0)
@@ -19,8 +17,8 @@ export class RecipeDto{
     @IsNotEmpty()
     imgUrl:string;
 
-    @IsEnum(Temp)
-    difficult:Temp;
+    @IsEnum(RecipeDifficulty)
+    difficult: RecipeDifficulty;
 
 }
 

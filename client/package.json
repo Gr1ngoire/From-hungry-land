@@ -16,6 +16,7 @@
     "@fortawesome/vue-fontawesome": "3.0.3",
     "axios": "1.3.2",
     "pinia": "2.0.28",
+    "ts-enum-util": "^4.0.2",
     "vue": "3.2.47",
     "vue-router": "4.1.6",
     "vue-select": "4.0.0-beta.6"
