@@ -2,10 +2,15 @@ import {UserRepository} from "@/repositories/repositories";
 import {type UserResponseDto, type UserSignUpDto, UserWithPassword} from "@/common/types/types";
 
 class UserService {
-    constructor(private repository: UserRepository) {}
+    constructor(private repository: UserRepository) {
+    }
 
     public getById(id: number): Promise<UserResponseDto | null> {
         return this.repository.getById(id);
+    }
+
+    public getByIdWithProducts(id: number): Promise<UserResponseDto | null> {
+        return this.repository.getByIdWithProducts(id)
     }
 
     public getByEmail(email: string): Promise<UserResponseDto | null> {

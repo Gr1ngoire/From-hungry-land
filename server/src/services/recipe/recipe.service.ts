@@ -22,7 +22,8 @@ export class RecipeService{
         return recipe;
     }
 
-    async getAll({difficulty, searchQuery, skip, take}: RecipeQueryOptionType):Promise<Recipe[]>{
+    async getAll({difficulty, searchQuery, skip, take, isPossibleRecipes}: RecipeQueryOptionType)
+        :Promise<Recipe[]>{
         const whereOptions:FindOptionsWhere<Recipe> = {}
 
         if(searchQuery){
@@ -35,6 +36,10 @@ export class RecipeService{
             }else {
                 whereOptions.difficult = In(difficulty)
             }
+        }
+
+        if(isPossibleRecipes){
+
         }
 
 

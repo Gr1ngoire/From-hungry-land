@@ -25,6 +25,21 @@ class UserRepository {
             }
         })
     }
+    public getByIdWithProducts(id:number): Promise<UserResponseDto | null>{
+        return this.dbUserRepository.findOne({
+            where: {
+                id
+            },
+            select: {
+                id: true,
+                nickname: true,
+                email: true,
+            },
+            relations: {
+                products:true
+            }
+        })
+    }
     public getByEmail(email: string): Promise<UserResponseDto | null> {
         return this.dbUserRepository.findOne({
             where: {
