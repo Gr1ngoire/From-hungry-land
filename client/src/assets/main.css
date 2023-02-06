@@ -100,3 +100,9 @@ h1 {
 input {
     outline: none;
 }
+
+/* main */
+
+main {
+    flex: 1 1 auto;
+}
