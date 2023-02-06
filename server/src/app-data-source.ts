@@ -1,13 +1,27 @@
 import { DataSource } from "typeorm"
-import {ENV} from "./common/enums/enums";
+import {config} from 'dotenv';
+
+config();
+
+const DB_CLIENT = 'postgres';
+
+const {
+    DATABASE_PORT,
+    DATABASE_HOST,
+    DATABASE_USERNAME,
+    DATABASE_PASSWORD,
+    DATABASE_NAME,
+} = process.env;
+
+console.log(DATABASE_PASSWORD)
 
 const dataSource = new DataSource({
-    type: ENV.DB.TYPE,
-    host: ENV.DB.HOST,
-    port: ENV.DB.PORT,
-    username: ENV.DB.USERNAME,
-    password: ENV.DB.PASSWORD,
-    database: ENV.DB.NAME,
+    type: DB_CLIENT,
+    host: DATABASE_HOST,
+    port: Number(DATABASE_PORT),
+    username: DATABASE_USERNAME,
+    password: DATABASE_PASSWORD,
+    database: DATABASE_NAME,
     entities: ["./src/db/entities/*.ts"],
     migrations: ["./src/db/migrations/*.ts"],
     logging: true,

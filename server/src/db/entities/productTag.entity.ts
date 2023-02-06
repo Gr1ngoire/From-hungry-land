@@ -1,9 +1,10 @@
 import {Entity, Column, OneToMany} from "typeorm"
 import {Product} from "./product.entity"
 import {Abstract} from "./abstract/abstract.entity";
-import {DbTablesNamesEnum} from "../../common/enums/enums";
 
-@Entity({name: DbTablesNamesEnum.PRODUCT_TAGS})
+const tableName = 'product_tag'
+
+@Entity({name: tableName})
 class ProductTag extends Abstract{
 
     @Column()

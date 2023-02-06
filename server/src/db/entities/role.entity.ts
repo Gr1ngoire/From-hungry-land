@@ -1,5 +1,4 @@
 import {Entity, Column, OneToMany} from "typeorm";
-import {DbTablesNamesEnum} from "../../common/enums/enums";
 import {Abstract} from "./abstract/abstract.entity";
 import {User} from './user.entity'
 
@@ -8,7 +7,9 @@ enum Roles {
     ADMIN = "admin"
 }
 
-@Entity({name: DbTablesNamesEnum.ROLES})
+const tableName = "roles"
+
+@Entity({name: tableName})
 class Role extends Abstract {
     @Column({
         type: "enum",
