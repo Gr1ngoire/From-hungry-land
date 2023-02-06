@@ -1,15 +1,31 @@
 <script setup lang="ts">
 import {$enum} from "ts-enum-util"
 import CheckBox from "@/common/components/CheckBox.vue";
-import RecipeDifficult from "@/components/recipe-browser-view/recipe-difficult.vue";
 import {RecipeDifficulty} from "@/common/enums/enums";
-import {ref} from "vue";
+import {ref, watch} from "vue";
+import {useRecipeBrowserStore} from "@/stores/recipe-browser-store";
+import RecipeDifficult from "@/components/recipe-browser-view/recipe-difficult.vue";
 
-const selectedDifficulties = ref({
+const recipeStore = useRecipeBrowserStore()
+const selectedDifficulties = ref<{ [key: string]: boolean }>({
   "easy": false,
   "medium": false,
   "hard": false,
 })
+
+
+watch(selectedDifficulties.value, (currValue: { [key: string]: boolean }) => {
+  const difficults:RecipeDifficulty[] = []
+  for (const key in currValue) {
+    if (currValue[key]) {
+      difficults.push(key as RecipeDifficulty)
+    }
+  }
+  recipeStore.setDifficult(difficults)
+  recipeStore.fetchRecipes()
+})
+
+
 </script>
 
 <template>
@@ -59,7 +75,7 @@ const selectedDifficulties = ref({
   margin-right: 8px;
 }
 
-.option__desc{
+.option__desc {
   font-size: 1.2rem;
 }
 </style>

@@ -20,7 +20,7 @@ import DifficultyOption from "@/components/recipe-browser-view/search-options/di
     </div>
     <div class="search-options__body options">
       <PossibleRecipesOption class="possible__recipe-option"/>
-      <DifficultyOption/>
+      <DifficultyOption class="difficult-options"/>
     </div>
   </div>
 </template>
