@@ -26,6 +26,17 @@ class AuthController {
             next(e);
         }
     }
+
+    public getCurrentUser = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const [_, token] = req.headers.authorization.split(' ')
+            const userData = await this.authService.getCurrentUser(token);
+            res.status(200);
+            res.send(userData);
+        } catch (e) {
+            next(e)
+        }
+    }
 }
 
 export {AuthController}

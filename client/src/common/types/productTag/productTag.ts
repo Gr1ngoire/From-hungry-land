@@ -1,0 +1,1 @@
+export type {ProductTagDTO} from 'shared/common/types/productTag/productTag.types'

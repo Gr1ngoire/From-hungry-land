@@ -4,7 +4,7 @@ import { Button } from "@/common/components/components";
 import { Product } from '@/components/components'
 
 import { ref, reactive, onMounted } from "vue";
-import { useProductListStore } from "@/stores/productListStore.js";
+import { useProductListStore } from "@/stores/productList.store";
 import type { ProductDTO } from "@/common/types/types";
 
 const productsStore = useProductListStore();

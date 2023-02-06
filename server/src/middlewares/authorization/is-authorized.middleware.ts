@@ -5,14 +5,19 @@ import { UnauthorizedException } from "@/common/exceptions/exceptions";
 
 const isAuthorized: RequestHandler = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const authHeader = req.headers.authorization;
-    const [bearer, token] = authHeader.split(' ')
-    if (bearer !== 'Bearer' || !token) {
-        throw new UnauthorizedException(ValidationExceptionMessages.USER_IS_UNAUTHORIZED);
+    const [tokenFormat, token] = authHeader.split(' ')
+
+    if (tokenFormat !== 'Bearer' || !token) {
+        next(new UnauthorizedException(ValidationExceptionMessages.USER_IS_UNAUTHORIZED));
     }
 
-    jwtService.verifyToken(token);
+    try {
+        jwtService.verifyToken(token);
+        next();
+    } catch {
+        next(new UnauthorizedException(ValidationExceptionMessages.USER_IS_UNAUTHORIZED));
+    }
 
-    next();
 
 }
 
