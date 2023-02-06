@@ -12,10 +12,10 @@ import {AuthService} from "@/services/auth/auth.service";
 
 const bcryptService = new BcryptService();
 const jwtService = new JwtService();
-const recipeService = new RecipeService(recipeRepository);
 const productService = new ProductService(productRepository);
 const productTagService = new ProductTagService(productTagRepository);
 const userService = new UserService(userRepository);
+const recipeService = new RecipeService(recipeRepository, userService);
 const authService = new AuthService(userService, jwtService, bcryptService);
 
 export {

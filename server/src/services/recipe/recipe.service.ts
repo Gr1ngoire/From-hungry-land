@@ -4,12 +4,15 @@ import {FindOptionsWhere} from "typeorm/find-options/FindOptionsWhere";
 import {RecipeQueryOptionType} from "@/common/types/types";
 import {EntityNotFoundException} from "@/common/exceptions/entity/entity-not-found.exception";
 import {RecipeRepository} from "@/repositories/repositories";
+import {UserService} from "@/services/user/user.service";
 
 export class RecipeService{
     private readonly repo:RecipeRepository;
+    private readonly userService: UserService
 
-    constructor(repo: RecipeRepository) {
+    constructor(repo: RecipeRepository, userService: UserService) {
         this.repo = repo;
+        this.userService = userService
     }
 
     async get(id: number):Promise<Recipe>{
