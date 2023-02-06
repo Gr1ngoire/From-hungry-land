@@ -15,8 +15,8 @@ const jwtService = new JwtService();
 const productService = new ProductService(productRepository);
 const productTagService = new ProductTagService(productTagRepository);
 const userService = new UserService(userRepository);
-const recipeService = new RecipeService(recipeRepository, userService);
 const authService = new AuthService(userService, jwtService, bcryptService);
+const recipeService = new RecipeService(recipeRepository, userService, authService);
 
 export {
     BcryptService,
