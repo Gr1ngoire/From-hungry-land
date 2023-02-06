@@ -1,61 +1,71 @@
 <script lang="ts" setup>
 
-import { ref, reactive, onMounted } from "vue";
+import { onMounted, computed } from "vue";
+import { useSingleRecipeStore } from "@/stores/singleRecipe.store";
+import { useRouter, onBeforeRouteLeave } from "vue-router";
 
-const ingredients = ref([{ name: "balls", amount: '2' }, { name: "eggs", amount: '300 ml' }]);
+const router = useRouter();
+const singleRecipeStore = useSingleRecipeStore();
+
+const recipe = computed(() => singleRecipeStore.getSingleRecipe)
+
+onMounted(() => {
+    singleRecipeStore.fetchSingleRecipe(Number(router.currentRoute.value.path.split("/")[2]))
+});
+
+onBeforeRouteLeave(() => {
+    singleRecipeStore.clearSingleRecipe();
+});
+
 
 
 </script>
 
 
 <template>
+    <template v-if="!singleRecipeStore.getIsRecipeLoading">
+        <div class="page-wrapper">
 
-    <div class="page-wrapper">
+            <div class="page-section rounded">
 
-        <div class="page-section rounded">
+                <div class="recipe-main-section">
+                    <img class="recipe-img rounded" :src="recipe.imgUrl" />
+                    <div class="recipe-info">
+                        <h1>{{ recipe.name }}</h1>
+                        <span class="underline"></span>
+                        <p>Difficulty: <span class="diff-color"> {{ recipe.difficult }}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="page-section transparent pt-0">
+                <div class="ingredients-section">
+                    <h2>Ingredients</h2>
+                    <span class="underline w-50"></span>
+                    <ul>
+                        <li v-for="ingredient in recipe.productRecipes">{{ ingredient.product.name }}, {{
+                            ingredient.quantity
+                        }}</li>
 
-            <div class="recipe-main-section">
-                <img class="recipe-img rounded"
-                    src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg" />
-                <div class="recipe-info">
-                    <h1>Longcomplicatednamefor somedish</h1>
-                    <span class="underline"></span>
-                    <p>Difficulty: <span class="diff-color"> Hard</span></p>
+                    </ul>
+                </div>
+                <div class="instrutions-section">
+                    <h2>Instructions</h2>
+                    <span class="underline w-50"></span>
+
+                    <p>
+                        {{ recipe.instruction }}
+                    </p>
+
                 </div>
             </div>
         </div>
-        <div class="page-section transparent pt-0">
-            <div class="ingredients-section">
-                <h2>Ingredients</h2>
-                <span class="underline w-50"></span>
-                <ul>
-                    <li v-for="ingredient in ingredients">{{ ingredient.name }} {{ ingredient.amount }}</li>
-
-                </ul>
-            </div>
-            <div class="instrutions-section">
-                <h2>Instructions</h2>
-                <span class="underline w-50"></span>
-
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas consequatur reiciendis, nam beatae
-                    vero ab cum. Provident aliquid saepe dolores. Provident doloremque architecto veritatis id quasi
-                    impedit explicabo maxime natus.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas consequatur reiciendis, nam beatae
-                    vero ab cum. Provident aliquid saepe dolores. Provident doloremque architecto veritatis id quasi
-                    impedit explicabo maxime natus.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas consequatur reiciendis, nam beatae
-                    vero ab cum. Provident aliquid saepe dolores. Provident doloremque architecto veritatis id quasi
-                    impedit explicabo maxime natus.
-                </p>
-
-            </div>
-
-
+    </template>
+    <template v-else>
+        <div class="loading-page">
+            <span class="loading-anim"></span>
+            <span class="loading-text">Loading...</span>
         </div>
-    </div>
-
-
+    </template>
 
 
 </template>
@@ -110,7 +120,7 @@ const ingredients = ref([{ name: "balls", amount: '2' }, { name: "eggs", amount:
 }
 
 h1 {
-    font-size: 2rem ;
+    font-size: 2rem;
     margin-bottom: 1rem;
     text-align: right;
 }
@@ -176,5 +186,4 @@ li {
         margin-bottom: 1rem;
     }
 }
-
 </style>
