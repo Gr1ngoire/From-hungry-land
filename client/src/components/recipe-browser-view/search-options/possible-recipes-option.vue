@@ -4,7 +4,7 @@ import {ref, watch} from "vue";
 import {useRecipeBrowserStore} from "@/stores/recipe-browser-store";
 
 const recipeStore = useRecipeBrowserStore()
-// const isSelected = ref<boolean>(false)
+const isSelected = ref<boolean>(false)
 // watch(isSelected, (selection, prevSelection) =>{
 //   recipeStore.
 // })
@@ -35,7 +35,9 @@ const checkBoxId:string = "PossibleRecipesCheckBox"
   align-items: center;
 }
 .option__checkbox{
-  margin-right: 20px;
+  flex: 0 0 25px ;
+  margin-right: 15px;
+
 }
 .option__desc{
   font-size: 1.2rem;

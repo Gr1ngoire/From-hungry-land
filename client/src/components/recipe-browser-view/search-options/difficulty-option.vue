@@ -5,6 +5,7 @@ import {RecipeDifficulty} from "@/common/enums/enums";
 import {ref, watch} from "vue";
 import {useRecipeBrowserStore} from "@/stores/recipe-browser-store";
 import RecipeDifficult from "@/components/recipe-browser-view/recipe-difficult.vue";
+import Options from "@/components/recipe-browser-view/search-options/options.vue";
 
 const recipeStore = useRecipeBrowserStore()
 const selectedDifficulties = ref<{ [key: string]: boolean }>({
@@ -56,7 +57,7 @@ watch(selectedDifficulties.value, (currValue: { [key: string]: boolean }) => {
 
 <style scoped>
 .option__title {
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin-bottom: 8px;
 }
 
@@ -77,5 +78,22 @@ watch(selectedDifficulties.value, (currValue: { [key: string]: boolean }) => {
 
 .option__desc {
   font-size: 1.2rem;
+}
+@media(max-width: 756px) {
+  .option{
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .option__checkbox{
+    margin-right: 5px;
+  }
+  .option__title{
+    display: none;
+    margin-bottom: 0px;
+  }
+  .option__raw{
+    margin: 0 10px 0 0;
+  }
+
 }
 </style>

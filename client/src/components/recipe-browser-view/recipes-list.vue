@@ -3,6 +3,7 @@ import {useRecipeBrowserStore} from "@/stores/recipe-browser-store";
 import RecipeItem from "@/components/recipe-browser-view/recipe-item.vue";
 import Input from "@/common/components/Input.vue";
 import {ref, watch} from "vue";
+import Options from "@/components/recipe-browser-view/search-options/options.vue";
 
 const recipeStore = useRecipeBrowserStore()
 const query = ref<string>("")
@@ -10,17 +11,13 @@ watch(query, (query, prevQuery) => {
   recipeStore.setSearchQuery(query)
   recipeStore.fetchRecipes()
 })
-// let options = {
-//   root: document.querySelector('#scrollArea'),
-//   rootMargin: '0px',
-//   threshold: 1.0
-// }
-// const callback = (entries:IntersectionObserverCallback) =>{
-//   if(entries[0].isIntersecting){
-//
-//   }
-// }
-// let observer = useRef<IntersectionObserver>();
+
+const condition = ref<boolean>(false)
+
+const toggle = () =>{
+  condition.value = !condition.value
+}
+
 </script>
 
 <template>
@@ -29,14 +26,33 @@ watch(query, (query, prevQuery) => {
       <div class="list__title">
         <h2>Browse recipes that you want :)</h2>
       </div>
-      <div class="list__logo">
-        <font-awesome-icon :icon="['fas', 'book']" size="4x" style="color: gray"/>
+      <div class="list__filters" @click="toggle">
+        <font-awesome-icon
+            :icon="['fas', 'filter']"
+            size="4x"
+            style="color: #A70050"
+        />
+      </div>
+      <div class="list__logo" >
+        <font-awesome-icon
+            :icon="['fas', 'book']"
+            size="4x"
+            style="color: gray"
+        />
       </div>
     </div>
+
     <div class="list__content">
       <div class="list__search">
         <input type="text" v-model.trim="query"/>
       </div>
+      <Transition name="slide-fade">
+        <div v-show="condition" class="list__filter-dropdown dropdown">
+          <div class="filters-section">
+            <Options class="filters" />
+          </div>
+        </div>
+      </Transition>
       <div class="list__items" v-if="!recipeStore.isLoading">
         <transition-group name="list">
           <RecipeItem
@@ -72,12 +88,19 @@ watch(query, (query, prevQuery) => {
 
 .list__title {
   margin-top: 20px;
+  margin-right: 20px;
+}
+
+.list__options-bar {
+  display: none;
 }
 
 .list__logo {
   width: 80px;
   height: 80px;
 }
+
+
 
 .list__logo img {
   height: 100%;
@@ -87,7 +110,7 @@ watch(query, (query, prevQuery) => {
 .list__items {
   display: flex;
   flex-wrap: wrap;
-  height: 75vh;
+  height: 85vh;
   overflow: auto;
   margin: 0 auto;
 }
@@ -118,7 +141,8 @@ watch(query, (query, prevQuery) => {
 .list__empty {
   color: red;
 }
-.list__spinner{
+
+.list__spinner {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -127,18 +151,57 @@ watch(query, (query, prevQuery) => {
   margin-top: 10%;
 }
 
-.list-move,
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s ease;
+.list__filters {
+  display: none;
+  cursor: pointer;
 }
 
-.list-enter-from,
-.list-leave-to {
+@media (max-width: 1150px) {
+  .list__title {
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .list__filters {
+    display: block;
+  }
+
+  .list__logo {
+    display: none;
+  }
+
+  .list__options-bar {
+    display: block;
+  }
+}
+@media (min-width: 768px) {
+  .list__filter-dropdown{
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-enter-from {
+  transform: translateY(-20px);
   opacity: 0;
-  transform: translateY(500px);
 }
 
+.slide-fade-leave-to {
+  transform: translateY(20px);
+  opacity: 0;
+}
 
 h2 {
   margin: 0;
