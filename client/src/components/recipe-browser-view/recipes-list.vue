@@ -2,9 +2,15 @@
 import {useRecipeBrowserStore} from "@/stores/recipe-browser-store";
 import RecipeItem from "@/components/recipe-browser-view/recipe-item.vue";
 import Input from "@/common/components/Input.vue";
+import {ref, watch} from "vue";
 
 const recipeStore = useRecipeBrowserStore()
-
+const query = ref<string>("")
+watch(query, (query, prevQuery) =>{
+  recipeStore.setSearchQuery(query)
+  recipeStore.fetchRecipes()
+  console.log(1)
+} )
 </script>
 
 <template>
@@ -19,7 +25,7 @@ const recipeStore = useRecipeBrowserStore()
     </div>
     <div class="list__content">
       <div class="list__search">
-        <input type="text">
+        <input type="text" v-model.trim="query"/>
       </div>
       <div class="list__items">
         <RecipeItem
