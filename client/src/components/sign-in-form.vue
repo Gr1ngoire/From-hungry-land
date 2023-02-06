@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import {reactive} from 'vue'
 import {useRouter} from 'vue-router'
-import type {ValidationError} from "@/exceptions/exceptions";
-import type {UserSignInDto} from "@/common/types/types";
 import {userSignIn as signInValidator} from "@/validators/validators";
 import {Button, Input} from "@/common/components/components";
-
+import type {ValidationError} from "@/exceptions/exceptions";
+import type {UserSignInDto} from "@/common/types/types";
+import {useAuthStore} from '@/stores/auth.store'
 import {AppRoutes} from "@/common/enums/enums";
 
 const router = useRouter();
+const authStore = useAuthStore();
 
 let signInFormState: UserSignInDto = {
   email: "",
@@ -49,8 +50,9 @@ const handleSignInPropertyChange: (event: Event) => void = (
 const handleSubmit: (event: Event) => void = (event: Event) => {
   event.preventDefault();
   if (Object.values(signInValidationState).every((el) => el.length === 0)) {
+    authStore.signIn(signInFormState)
     console.log("SIGN IN!", signInFormState)
-    // router.push(Location for authed users);
+    router.push(AppRoutes.PRODUCTS);
   }
 };
 

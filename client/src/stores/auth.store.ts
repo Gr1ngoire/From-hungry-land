@@ -11,7 +11,7 @@ type CurrentUserState = {
     role: RoleResponseDto
 }
 
-const useProductListStore = defineStore(StoreNames.AUTH, () => {
+const useAuthStore = defineStore(StoreNames.AUTH, () => {
 
     const currentUserData = ref<UserResponseDto>();
 
@@ -46,5 +46,5 @@ const useProductListStore = defineStore(StoreNames.AUTH, () => {
 })
 
 export {
-    useProductListStore
+    useAuthStore
 }

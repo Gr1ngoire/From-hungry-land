@@ -5,10 +5,11 @@ import type {ValidationError} from "@/exceptions/exceptions";
 import type {UserSignUpDto} from "@/common/types/types";
 import {userSignUp as signUpValidator} from "@/validators/validators";
 import {Button, Input} from "@/common/components/components";
-
 import {AppRoutes} from "@/common/enums/enums";
+import {useAuthStore} from '@/stores/auth.store'
 
 const router = useRouter();
+const authStore = useAuthStore();
 
 let signUpFormState: UserSignUpDto = {
   nickname: "",
@@ -51,8 +52,9 @@ const handleSignUpPropertyChange: (event: Event) => void = (
 const handleSubmit: (event: Event) => void = (event: Event) => {
   event.preventDefault();
   if (Object.values(signUpValidationState).every((el) => el.length === 0)) {
+    authStore.signUp(signUpFormState);
     console.log("SIGN UP!", signUpFormState)
-    // router.push(Location for authed users);
+    router.push(AppRoutes.PRODUCTS);
   }
 };
 
