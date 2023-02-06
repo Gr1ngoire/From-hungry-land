@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import RecipesList from "@/components/recipe-browser-view/recipes-list.vue";
   import RecipesSearchOptions from "@/components/recipe-browser-view/recipes-search-options.vue";
 import {useRecipeBrowserStore} from "@/stores/recipe-browser-store";
@@ -29,15 +29,15 @@ onMounted(() =>{
 }
 
 .list{
-  flex: 1 1 61.5%;
-  margin-right: 30px;
+  flex: 0 1 61.5%;
+  margin-right: 3rem;
 }
 
 .tags{
-  flex:1 1 30%;
+  flex:0 1 29.5%;
 }
 
 .recipes__section{
-
+  padding: 2rem;
 }
 </style>
