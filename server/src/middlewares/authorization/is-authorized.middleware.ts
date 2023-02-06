@@ -8,12 +8,16 @@ const isAuthorized: RequestHandler = async (req: Request, res: Response, next: N
     const [tokenFormat, token] = authHeader.split(' ')
 
     if (tokenFormat !== 'Bearer' || !token) {
-        throw new UnauthorizedException(ValidationExceptionMessages.USER_IS_UNAUTHORIZED);
+        next(new UnauthorizedException(ValidationExceptionMessages.USER_IS_UNAUTHORIZED));
     }
 
-    jwtService.verifyToken(token);
+    try {
+        jwtService.verifyToken(token);
+        next();
+    } catch {
+        next(new UnauthorizedException(ValidationExceptionMessages.USER_IS_UNAUTHORIZED));
+    }
 
-    next();
 
 }
 

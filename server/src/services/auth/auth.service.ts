@@ -39,25 +39,21 @@ class AuthService {
         }
     }
 
-    public async getCurrentUser(token: string): Promise<UserResponseDto | null> {
-        try {
-            const { id } = this.jwtService.decode(token) as UserTokenData;
-            const {
-                id: foundUserId,
-                nickname,
-                email,
-                role
-            } = await this.userService.getById(id);
+    public async getCurrentUser(token: string): Promise<UserResponseDto> {
+        const { id } = this.jwtService.decode(token) as UserTokenData;
+        const {
+            id: foundUserId,
+            nickname,
+            email,
+            role
+        } = await this.userService.getById(id);
 
-            return {
-                id: foundUserId,
-                nickname,
-                email,
-                role
-            };
-        } catch {
-            throw new UnauthorizedException(ValidationExceptionMessages.USER_IS_UNAUTHORIZED);
-        }
+        return {
+            id: foundUserId,
+            nickname,
+            email,
+            role
+        };
     }
 
     private async checkUser(
