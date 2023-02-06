@@ -3,7 +3,7 @@
     <ul class="header-elements">
       <li class="header-elem">
         <button class="header-btn">
-          <font-awesome-icon :icon="['fas', 'bars']" />
+          <font-awesome-icon :icon="['fas', 'bars']"/>
         </button>
       </li>
       <li class="header-elem">
@@ -12,7 +12,7 @@
       <li class="header-elem">
         <router-link to="">
           <button class="header-btn">
-            <font-awesome-icon :icon="['fas', 'user']" />
+            <font-awesome-icon :icon="['fas', 'user']"/>
           </button>
         </router-link>
       </li>
@@ -21,9 +21,16 @@
 </template>
 
 <script setup lang="ts">
-  import {AppRoutes} from "@/common/enums/enums";
+import {ref} from "vue";
+import {AppRoutes} from "@/common/enums/enums";
+import router from '@/router/index'
 
-  const allowedToRender = window.location.pathname !== AppRoutes.SIGN_IN && window.location.pathname !== AppRoutes.SIGN_UP
+const allowedToRender = ref<boolean>( false)
+
+router.isReady().then(() => {
+  const route = router.currentRoute.value.path
+  allowedToRender.value = route !== AppRoutes.SIGN_IN && route !== AppRoutes.SIGN_UP
+})
 </script>
 
 <style scoped>
