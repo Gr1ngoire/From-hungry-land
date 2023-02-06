@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Header} from "@/common/components/components";
+import {Footer, Header} from "@/common/components/components";
 import {LocalStorageService} from "@/services/services";
 import {useAuthStore} from "@/stores/auth.store";
 
@@ -23,6 +23,6 @@ if (userToken) {
   </main>
 
   <footer>
-
+    <Footer/>
   </footer>
 </template>

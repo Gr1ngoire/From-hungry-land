@@ -101,6 +101,11 @@ input {
     outline: none;
 }
 
+/* main */
+
+main {
+    flex: 1 1 auto;
+}
 /* loading */
 
 .loading-page {
