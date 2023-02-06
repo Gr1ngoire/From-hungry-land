@@ -1,4 +1,5 @@
 export enum StoreNames {
     AUTH = "auth",
-    PRODUCTS = "products"
+    PRODUCTS = "products",
+    RECIPES = "recipes",
 }
