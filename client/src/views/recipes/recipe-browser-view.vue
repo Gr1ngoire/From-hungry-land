@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import RecipesList from "@/components/recipe-browser-view/recipes-list.vue";
   import RecipesSearchOptions from "@/components/recipe-browser-view/recipes-search-options.vue";
 import {useRecipeBrowserStore} from "@/stores/recipe-browser-store";
@@ -11,11 +11,10 @@ onMounted(() =>{
 
 
 <template>
-  <img src="https://thumbs.dreamstime.com/b/craffin-isolated-white-background-christmas-panettone-raisins-sprinkled-powdered-sugar-craffin-isolated-white-204075444.jpg" alt="sosi">
   <div class="page-wrapper">
     <div class="recipes">
-      <RecipesList class="recipes__list list" />
-      <RecipesSearchOptions class="recipes__tags tags"/>
+      <RecipesList class="recipes__section list rounded" />
+      <RecipesSearchOptions class="recipes__section tags rounded"/>
     </div>
   </div>
 </template>
@@ -24,5 +23,21 @@ onMounted(() =>{
 <style scoped>
 .page-wrapper{
   display: block;
+}
+.recipes{
+  display: flex;
+}
+
+.list{
+  flex: 0 1 61.5%;
+  margin-right: 3rem;
+}
+
+.tags{
+  flex:0 1 29.5%;
+}
+
+.recipes__section{
+  padding: 2rem;
 }
 </style>
