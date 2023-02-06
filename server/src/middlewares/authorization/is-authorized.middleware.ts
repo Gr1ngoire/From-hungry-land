@@ -5,8 +5,9 @@ import { UnauthorizedException } from "@/common/exceptions/exceptions";
 
 const isAuthorized: RequestHandler = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const authHeader = req.headers.authorization;
-    const [bearer, token] = authHeader.split(' ')
-    if (bearer !== 'Bearer' || !token) {
+    const [tokenFormat, token] = authHeader.split(' ')
+
+    if (tokenFormat !== 'Bearer' || !token) {
         throw new UnauthorizedException(ValidationExceptionMessages.USER_IS_UNAUTHORIZED);
     }
 

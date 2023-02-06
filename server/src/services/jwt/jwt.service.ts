@@ -1,4 +1,4 @@
-import {sign, verify} from 'jsonwebtoken'
+import {sign, verify, decode, JwtPayload} from 'jsonwebtoken'
 import {type UserTokenData} from "@/common/types/types";
 import {ENV} from "@/common/enums/enums";
 
@@ -14,6 +14,10 @@ class JwtService {
 
     public verifyToken(token: string): void {
         verify(token, JWT_PRIVATE_KEY);
+    }
+
+    public decode(token: string): JwtPayload {
+        return decode(token, {json: true})
     }
 }
 

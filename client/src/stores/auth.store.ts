@@ -32,10 +32,16 @@ const useProductListStore = defineStore(StoreNames.AUTH, () => {
         currentUserData.value = user;
     }
 
+    const getCurrentUser = async () => {
+        const userData = await authService.getCurrentUser();
+        currentUserData.value = userData;
+    }
+
     return {
         getCurrentUserData,
         signIn,
         signUp,
+        getCurrentUser,
     }
 })
 
