@@ -101,7 +101,7 @@ const toggleDropdown = () => {
 </template>
 
 <style scoped>
-:deep() {
+:deep(.product-search-wrapper) {
     --vs-border-radius: 20px;
     --vs-actions-padding: 4px 1rem 0;
     --vs-dropdown-option--active-bg: var(--header-color);
