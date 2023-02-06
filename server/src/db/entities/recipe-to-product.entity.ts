@@ -1,10 +1,11 @@
 import {Abstract} from "../entities/abstract/abstract.entity";
 import {Column, Entity, ManyToOne} from "typeorm";
-import {DbTablesNamesEnum} from "../../common/enums/enums";
 import {Recipe} from "../entities/recipe.entity";
 import {Product} from "../entities/product.entity";
 
-@Entity(DbTablesNamesEnum.RECIPES_TO_PROCUCTS)
+const tableName = 'recipes_to_products';
+
+@Entity({name: tableName})
 export class RecipeToProductEntity extends Abstract{
 
 

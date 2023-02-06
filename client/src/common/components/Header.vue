@@ -16,7 +16,7 @@
       <li class="header-elem">
         <router-link to="">
           <button class="header-btn">
-            <font-awesome-icon :icon="['fas', 'user']" />
+            <font-awesome-icon :icon="['fas', 'user']"/>
           </button>
         </router-link>
       </li>
@@ -28,8 +28,15 @@
 import { AppRoutes } from "@/common/enums/enums";
 import NavMenu from "./NavMenu.vue";
 import { ref } from "vue";
+import router from '@/router/index'
 
-const allowedToRender = window.location.pathname !== AppRoutes.SIGN_IN && window.location.pathname !== AppRoutes.SIGN_UP
+const allowedToRender = ref<boolean>( false)
+
+router.isReady().then(() => {
+  const route = router.currentRoute.value.path
+  allowedToRender.value = route !== AppRoutes.SIGN_IN && route !== AppRoutes.SIGN_UP
+})
+
 const isNavMenuOpen = ref(false);
 
 const toggleNavMenu = () => {
@@ -39,8 +46,6 @@ const toggleNavMenu = () => {
 const handleClickOutside = () => {
   isNavMenuOpen.value = false;
 }
-
-
 </script>
 
 <style scoped>

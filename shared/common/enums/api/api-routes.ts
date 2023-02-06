@@ -5,7 +5,6 @@ enum ApiRoutes {
     PRODUCT_TAGS = "/product-tags",
     RECIPES = "/recipes",
 
-    RECIPE = "/recipes/:id",
 }
 
 export {ApiRoutes}
