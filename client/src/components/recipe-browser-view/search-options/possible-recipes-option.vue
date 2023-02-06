@@ -13,7 +13,10 @@ const checkBoxId:string = "PossibleRecipesCheckBox"
         v-model="isSelected"
         :id="checkBoxId"
     />
-    <label :for="checkBoxId">
+    <label
+        :for="checkBoxId"
+        class="option__desc"
+    >
       Possible recipes for your product list
     </label>
 
@@ -27,5 +30,8 @@ const checkBoxId:string = "PossibleRecipesCheckBox"
 }
 .option__checkbox{
   margin-right: 20px;
+}
+.option__desc{
+  font-size: 1.2rem;
 }
 </style>

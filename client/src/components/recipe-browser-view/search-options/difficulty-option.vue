@@ -26,7 +26,10 @@ const selectedDifficulties = ref({
           class="option__checkbox"
           v-model="selectedDifficulties[difficult]"
       />
-      <label :for="difficult + 'difficultCheckBox'">
+      <label
+          :for="difficult + 'difficultCheckBox'"
+          class="option__desc"
+      >
         <RecipeDifficult
             :difficult="difficult"
         />
@@ -54,5 +57,9 @@ const selectedDifficulties = ref({
 
 .option__checkbox {
   margin-right: 8px;
+}
+
+.option__desc{
+  font-size: 1.2rem;
 }
 </style>

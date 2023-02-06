@@ -31,9 +31,10 @@ const toggle = (e: Event) => {
 
 
 <style scoped>
-.checkbox {
-  width: 30px;
-  height: 30px;
-  color: #1cba16;
+.checkbox  {
+  width: 25px;
+  height: 25px;
+  color: white;
+  accent-color: #03852c;
 }
 </style>

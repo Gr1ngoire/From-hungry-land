@@ -18,8 +18,8 @@ import DifficultyOption from "@/components/recipe-browser-view/search-options/di
         <img src="https://cdn-icons-png.flaticon.com/512/73/73391.png" alt="options">
       </div>
     </div>
-    <div class="search-options__body">
-      <PossibleRecipesOption/>
+    <div class="search-options__body options">
+      <PossibleRecipesOption class="possible__recipe-option"/>
       <DifficultyOption/>
     </div>
   </div>
@@ -46,6 +46,9 @@ import DifficultyOption from "@/components/recipe-browser-view/search-options/di
 }
 .search-options__body{
 
+}
+.possible__recipe-option{
+  margin-bottom: 20px;
 }
 h2{
   margin: 0;
