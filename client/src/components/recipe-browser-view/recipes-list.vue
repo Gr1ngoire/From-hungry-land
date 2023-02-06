@@ -6,11 +6,22 @@ import {ref, watch} from "vue";
 
 const recipeStore = useRecipeBrowserStore()
 const query = ref<string>("")
-watch(query, (query, prevQuery) =>{
+watch(query, (query, prevQuery) => {
   recipeStore.setSearchQuery(query)
   recipeStore.fetchRecipes()
   console.log(1)
-} )
+})
+// let options = {
+//   root: document.querySelector('#scrollArea'),
+//   rootMargin: '0px',
+//   threshold: 1.0
+// }
+// const callback = (entries:IntersectionObserverCallback) =>{
+//   if(entries[0].isIntersecting){
+//
+//   }
+// }
+// let observer = useRef<IntersectionObserver>();
 </script>
 
 <template>
@@ -27,13 +38,23 @@ watch(query, (query, prevQuery) =>{
       <div class="list__search">
         <input type="text" v-model.trim="query"/>
       </div>
-      <div class="list__items">
-        <RecipeItem
-            v-for="recipe in recipeStore.getRecipes"
-            class="list__item"
-            :recipe="recipe"
-        />
+      <div class="list__items" v-if="!recipeStore.isLoading">
+        <transition-group name="list">
+          <RecipeItem
+              v-for="recipe in recipeStore.getRecipes"
+              :key="recipe.id"
+              class="list__item"
+              :recipe="recipe"
+          />
+        </transition-group>
+        <div class="list__empty" v-if="!recipeStore.isLoading &&!recipeStore.isRecipesLoaded">
+          Input something else. Current value is invalid
+        </div>
       </div>
+      <div class="list__spinner" v-else>
+        <font-awesome-icon :icon="['fas', 'spinner']" :spin="true" size="3x"/>
+      </div>
+
     </div>
   </div>
 </template>
@@ -89,15 +110,35 @@ watch(query, (query, prevQuery) =>{
   flex: 1 1 auto;
   margin: 5px 13px 20px 13px;
   padding: -5px -13px -20px -13px;
-
 }
 
 .list__content {
   padding: 5px;
 }
 
+.list__empty {
+  color: red;
+}
+.list__spinner{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
 
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
 
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(500px);
+}
 
 
 h2 {

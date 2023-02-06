@@ -8,11 +8,21 @@ import {recipeService} from "@/services/services"
 export const useRecipeBrowserStore = defineStore(StoreNames.RECIPES, () => {
     const recipes = ref<RecipeDtoType[]>([])
     const queryOptions = ref<RecipeQueryOptionType>({})
+    const isLoading = ref<boolean>(false)
 
     const getRecipes: ComputedRef<RecipeDtoType[]> = computed(() => recipes.value)
     const isRecipesLoaded: ComputedRef<boolean> = computed(() => recipes.value.length > 0)
+
+    let timeout:number
     const fetchRecipes = async () => {
-        recipes.value = await recipeService.getRecipes(queryOptions.value)
+        // setRecioes([])
+        setIsLoading(true)
+        clearTimeout(timeout)
+        timeout = setTimeout(async () =>{
+            setIsLoading(false)
+            recipes.value = await recipeService.getRecipes(queryOptions.value)
+        }, 500)
+
     }
     const setQueryOptions = (options:RecipeQueryOptionType) => {
         queryOptions.value = options
@@ -29,8 +39,17 @@ export const useRecipeBrowserStore = defineStore(StoreNames.RECIPES, () => {
         queryOptions.value.skip = skip
     }
 
+    const setRecioes = (arr: RecipeDtoType[]) =>{
+        recipes.value = arr
+    }
+
+    const setIsLoading = (value:boolean) => {
+        isLoading.value = value
+    }
+
 
     return {
+        isLoading,
         getRecipes,
         isRecipesLoaded,
         fetchRecipes,
