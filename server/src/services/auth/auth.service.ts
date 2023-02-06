@@ -1,7 +1,13 @@
 import {BcryptService, JwtService, UserService} from "@/services/services";
-import {type UserSignUpDto, type UserSignInResponseDto, type UserSignInDto, type UserResponseDto} from "@/common/types/types";
-import {InvalidCredentialsException} from "@/common/exceptions/user/invalid-credentials.exception";
-import {ValidationExceptionMessages} from "shared/common/enums/exception/validation/validation-exception-message.enum";
+import {
+    type UserSignUpDto,
+    type UserSignInResponseDto,
+    type UserSignInDto,
+    type UserResponseDto,
+    UserTokenData
+} from "@/common/types/types";
+import {InvalidCredentialsException, UnauthorizedException} from "@/common/exceptions/exceptions";
+import {ValidationExceptionMessages} from "@/common/enums/enums";
 
 type UserValidationParams = {
     email: string;
@@ -31,6 +37,23 @@ class AuthService {
             token: this.jwtService.generateToken({id, email, role}),
             user: newUser
         }
+    }
+
+    public async getCurrentUser(token: string): Promise<UserResponseDto> {
+        const { id } = this.jwtService.decode(token) as UserTokenData;
+        const {
+            id: foundUserId,
+            nickname,
+            email,
+            role
+        } = await this.userService.getById(id);
+
+        return {
+            id: foundUserId,
+            nickname,
+            email,
+            role
+        };
     }
 
     private async checkUser(
