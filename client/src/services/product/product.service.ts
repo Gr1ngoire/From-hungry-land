@@ -1,9 +1,9 @@
-import {axios} from '../axios/axios';
+import {axiosService} from '../axios/axios.service';
 import { ApiRoutes } from '@/common/enums/enums';
 
 export class ProductService {
     public async getProducts() {
-        const {data} = await axios.get(ApiRoutes.PRODUCTS);
+        const {data} = await axiosService.get(ApiRoutes.PRODUCTS);
         return data;
     }
 
