@@ -1,6 +1,6 @@
 import {ref} from "vue";
 import {createRouter, createWebHistory} from 'vue-router'
-import {SignInView, SignUpView, ProductListView, RecipeBrowserView} from "@/views/views";
+import {SignInView, SignUpView, ProductListView, RecipeBrowserView, SingleRecipeViewVue} from "@/views/views";
 import {pathSlashStripper} from "./helpers/helpers";
 import {AppRoutes} from "@/common/enums/enums";
 import {useAuthStore} from "@/stores/auth.store";
@@ -29,6 +29,11 @@ const router = createRouter({
             component: RecipeBrowserView
         },
         {
+            path: AppRoutes.RECIPES_SINGLE,
+            name: pathSlashStripper(AppRoutes.RECIPES_SINGLE),
+            component: SingleRecipeViewVue,
+        },
+        {
             path: AppRoutes.ALL,
             redirect: AppRoutes.RECIPES,
         }
@@ -43,12 +48,12 @@ router.beforeEach((to) => {
     if (!isAuth.value) {
         switch (to.path) {
             case AppRoutes.PRODUCTS: {
-                // window.location.pathname = AppRoutes.SIGN_IN
                 return {path: AppRoutes.SIGN_IN}
             }
             default:
                 break;
         }
+
     }
 })
 
