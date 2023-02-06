@@ -1,5 +1,5 @@
 import {Recipe} from "@/db/entities/recipe.entity";
-import {In, Like} from "typeorm";
+import {ILike, In} from "typeorm";
 import {FindOptionsWhere} from "typeorm/find-options/FindOptionsWhere";
 import {RecipeQueryOptionType} from "@/common/types/types";
 import {EntityNotFoundException} from "@/common/exceptions/entity/entity-not-found.exception";
@@ -26,7 +26,7 @@ export class RecipeService{
         const whereOptions:FindOptionsWhere<Recipe> = {}
 
         if(searchQuery){
-            whereOptions.name = Like(`%${searchQuery.trim()}%`)
+            whereOptions.name = ILike(`%${searchQuery.trim()}%`)
         }
 
         if(difficulty){
