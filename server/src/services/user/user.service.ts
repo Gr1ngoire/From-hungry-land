@@ -1,5 +1,6 @@
 import {UserRepository} from "@/repositories/repositories";
 import {type UserResponseDto, type UserSignUpDto, UserWithPassword} from "@/common/types/types";
+import {User} from "@/db/entities/user.entity";
 
 class UserService {
     constructor(private repository: UserRepository) {
@@ -9,7 +10,7 @@ class UserService {
         return this.repository.getById(id);
     }
 
-    public getByIdWithProducts(id: number): Promise<UserResponseDto | null> {
+    public getByIdWithProducts(id: number): Promise<User | null> {
         return this.repository.getByIdWithProducts(id)
     }
 
