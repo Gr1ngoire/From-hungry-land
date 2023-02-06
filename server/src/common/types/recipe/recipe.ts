@@ -1,1 +1,1 @@
-export {RecipeQueryOptionType} from "./recipe.query.option.type"
+export {RecipeQueryOptionType} from "shared/common/types/types"

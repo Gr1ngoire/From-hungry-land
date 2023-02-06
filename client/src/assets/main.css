@@ -21,7 +21,11 @@
 .page-wrapper {
     display: grid;
     grid-template-columns: 1fr;
+    padding: 3em 3rem 0 3rem;
+    min-height: 30rem;
 }
+
+
 
 .page-section {
     background-color: var(--section-bg-color);
