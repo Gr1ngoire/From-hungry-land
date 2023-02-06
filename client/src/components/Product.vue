@@ -38,10 +38,10 @@ const props = defineProps({
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 1rem;
+    gap: .7rem;
     background-color: var(--section-color);
     border: 1px solid black;
-    padding: 1rem;
+    padding: .4rem;
     box-shadow: 1px 1px 5 px rgba(0, 0, 0, 0.2);
 }
 
