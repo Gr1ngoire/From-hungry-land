@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import CheckBox from "@/common/components/CheckBox.vue";
-import {ref} from "vue";
+import {ref, watch} from "vue";
+import {useRecipeBrowserStore} from "@/stores/recipe-browser-store";
 
-const isSelected = ref<boolean>(false)
+const recipeStore = useRecipeBrowserStore()
+// const isSelected = ref<boolean>(false)
+// watch(isSelected, (selection, prevSelection) =>{
+//   recipeStore.
+// })
 const checkBoxId:string = "PossibleRecipesCheckBox"
+
 </script>
 
 <template>
