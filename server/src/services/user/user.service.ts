@@ -1,5 +1,6 @@
 import {UserRepository} from "@/repositories/repositories";
 import {type UserResponseDto, type UserSignUpDto, UserWithPassword} from "@/common/types/types";
+import { UserProductsDTO } from "shared/common/types/user/user-products-dto.type";
 
 class UserService {
     constructor(private repository: UserRepository) {}
@@ -18,6 +19,10 @@ class UserService {
 
     public create(userDto: UserSignUpDto): Promise<UserResponseDto> {
         return this.repository.create(userDto);
+    }
+
+    public async getUserProducts(id: number): Promise<UserProductsDTO> {
+        return await this.repository.getUserProducts(id);
     }
 }
 
