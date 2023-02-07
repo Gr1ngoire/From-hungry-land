@@ -2,7 +2,7 @@
 
 import { onMounted, computed } from "vue";
 import { useSingleRecipeStore } from "@/stores/singleRecipe.store";
-import { useRouter, onBeforeRouteLeave } from "vue-router";
+import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/auth.store";
 
 const router = useRouter();
@@ -19,9 +19,7 @@ onMounted(() => {
     }
 });
 
-onBeforeRouteLeave(() => {
-    singleRecipeStore.clearSingleRecipe();
-});
+
 
 
 
