@@ -79,7 +79,7 @@ watch(selectedDifficulties.value, (currValue: { [key: string]: boolean }) => {
 .option__desc {
   font-size: 1.2rem;
 }
-@media(max-width: 756px) {
+@media(max-width: 768px) {
   .option{
     display: flex;
     margin-bottom: 20px;
