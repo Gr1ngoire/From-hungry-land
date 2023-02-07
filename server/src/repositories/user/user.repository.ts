@@ -6,6 +6,7 @@ import {RoleRepository} from "@/repositories/role/role.repository";
 import {Roles} from "shared/common/enums/role/roles.enum";
 import {ValidationExceptionMessages} from "shared/common/enums/exception/validation/validation-exception-message.enum";
 import { UserProductsDTO } from "shared/common/types/user/user-products-dto.type";
+import { Product } from "@/db/entities/product.entity";
 
 class UserRepository {
     constructor(private dbUserRepository: Repository<User>, private roleRepository: RoleRepository) {}
@@ -105,6 +106,36 @@ class UserRepository {
         const createdUser = await this.dbUserRepository.save(newUser);
         return this.getById(createdUser.id);
     }
+
+    public async addProductToUser(userId: number, productId: number): Promise<void> {
+        const user = await this.getByIdWithProducts(userId);
+        if (!user) {
+            throw new Error('User not found');
+        }
+        const product = await this.dbUserRepository.manager.findOne(Product,
+            {
+                where: { 
+                    id: productId
+                },
+            }
+        );
+        if (!product) {
+            throw new Error('Product not found');
+        }
+        user.products.push(product);
+   
+        await this.dbUserRepository.save(user);
+    }
+
+    public async removeProductFromUser(userId: number, productId: number): Promise<void> {
+        const user = await this.getByIdWithProducts(userId);
+        if (!user) {
+            throw new Error('User not found');
+        }
+        user.products = user.products.filter(product => product.id !== productId);
+        await this.dbUserRepository.save(user);
+    }
+
 }
 
 export {UserRepository}
