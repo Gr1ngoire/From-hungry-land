@@ -48,6 +48,7 @@ const handleClickOutside = () => {
 }
 
 .nav-menu__list {
+    position: relative;
     width: 30%;
     height: 100%;
     list-style: none;
