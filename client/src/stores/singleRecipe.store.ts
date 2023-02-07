@@ -19,9 +19,11 @@ type SingleRecipe = {
 export const useSingleRecipeStore = defineStore(StoreNames.SINGLE_RECIPE, () => {
     const singleRecipe = ref({} as SingleRecipe);
     const isRecipeLoading = ref<boolean>(false);
+    const recipeIngredientsChecks = ref<{id: number, isPresent: boolean}[]>([]);
 
     const getSingleRecipe = computed((): SingleRecipe =>  singleRecipe.value);
     const getIsRecipeLoading = computed(() => isRecipeLoading.value);
+    const getRecipeIngredientsChecks = computed(() => recipeIngredientsChecks.value);
     
     const fetchSingleRecipe = async (id: number) => {
         isRecipeLoading.value = true;
@@ -29,6 +31,19 @@ export const useSingleRecipeStore = defineStore(StoreNames.SINGLE_RECIPE, () => 
         singleRecipe.value = recipe;
         isRecipeLoading.value = false;
     };
+
+    const checkRecipeIngredients = async (id: number) => {
+        const ingredients = await recipeService.checkRecipeIngredients(id);
+        recipeIngredientsChecks.value = ingredients;
+    }
+
+    const presentIngredients = computed((id: number) => {
+        return recipeIngredientsChecks.value.map((check) => {
+            const recipe = singleRecipe.value.productRecipes.find((product) => product.product.id === check.id);
+            return {recipe: recipe, isPresent: check.isPresent};
+        });
+    });
+        
 
     const clearSingleRecipe = () => {
         singleRecipe.value = {} as SingleRecipe;
@@ -39,7 +54,10 @@ export const useSingleRecipeStore = defineStore(StoreNames.SINGLE_RECIPE, () => 
         getSingleRecipe,
         fetchSingleRecipe,
         getIsRecipeLoading,
-        clearSingleRecipe
+        clearSingleRecipe,
+        checkRecipeIngredients,
+        getRecipeIngredientsChecks,
+        presentIngredients
     };
     }
 );
