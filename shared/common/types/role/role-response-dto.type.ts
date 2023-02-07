@@ -1,4 +1,4 @@
-import {Roles} from "../../enums/role/roles.enum";
+import type {Roles} from "../../enums/role/roles.enum";
 
 type RoleResponseDto = {
     id: number;

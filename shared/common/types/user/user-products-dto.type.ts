@@ -1,4 +1,4 @@
-import {ProductDTO} from '../product/product.types';
+import type {ProductDTO} from '../product/product.types';
 
 export type UserProductsDTO = {
     id: number,

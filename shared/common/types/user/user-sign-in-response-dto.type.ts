@@ -1,4 +1,4 @@
-import {UserResponseDto} from "./user-response-dto.type";
+import type {UserResponseDto} from "./user-response-dto.type";
 
 type UserSignInResponseDto = {
     token: string;
