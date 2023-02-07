@@ -2,20 +2,24 @@
 
 import { onMounted, computed } from "vue";
 import { useSingleRecipeStore } from "@/stores/singleRecipe.store";
-import { useRouter, onBeforeRouteLeave } from "vue-router";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth.store";
 
 const router = useRouter();
 const singleRecipeStore = useSingleRecipeStore();
+const authStore = useAuthStore();
 
 const recipe = computed(() => singleRecipeStore.getSingleRecipe)
 
+
 onMounted(() => {
     singleRecipeStore.fetchSingleRecipe(Number(router.currentRoute.value.path.split("/")[2]))
+    if (!!authStore.getCurrentUser) {
+        singleRecipeStore.checkRecipeIngredients(Number(router.currentRoute.value.path.split("/")[2]))
+    }
 });
 
-onBeforeRouteLeave(() => {
-    singleRecipeStore.clearSingleRecipe();
-});
+
 
 
 
@@ -42,11 +46,20 @@ onBeforeRouteLeave(() => {
                 <div class="ingredients-section">
                     <h2>Ingredients</h2>
                     <span class="underline w-50"></span>
-                    <ul>
+                    <ul v-if="!authStore.getCurrentUserData">
                         <li v-for="ingredient in recipe.productRecipes">{{ ingredient.product.name }}, {{
                             ingredient.quantity
-                        }}</li>
-
+                        }}
+                        </li>
+                    </ul>
+                    <ul v-else>
+                        <li v-for="checked in singleRecipeStore.presentIngredients">
+                            <span v-if="checked.isPresent">✅ {{ checked.recipe?.product.name }},
+                                {{ checked.recipe?.quantity }}</span>
+                            <span v-else>❌ 
+                                {{ checked.recipe?.product.name }},
+                                {{ checked.recipe?.quantity }}</span>
+                        </li>
                     </ul>
                 </div>
                 <div class="instrutions-section">

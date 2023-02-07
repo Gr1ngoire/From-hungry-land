@@ -5,7 +5,7 @@
         <span>{{ name }}</span>
         <span class="tag">{{ tag }}</span>
     </div>
-        <button class="delete-btn">
+        <button @click="deleteProduct" class="delete-btn">
             <font-awesome-icon icon="xmark" />
         </button>
     </button>
@@ -31,6 +31,14 @@ const props = defineProps({
         required: true,
     }
 });
+
+
+const emit = defineEmits(['delete']);
+
+const deleteProduct = () => {
+    emit('delete');
+}
+
 </script>
 
 <style scoped>
@@ -70,5 +78,6 @@ img {
 .delete-btn {
     background: transparent;
     border: none;
+    cursor: pointer;
 }
 </style>

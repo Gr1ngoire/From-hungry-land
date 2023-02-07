@@ -7,3 +7,4 @@ export {ProductRoutes} from "./product/product"
 export {Roles} from './role/role'
 export {RecipeRoutes, RecipeDifficulty} from "./recipe/recipe"
 export {ProductTagRoutes} from "./productTag/productTag"
+export {UserRoutes} from "./user/user"

@@ -1,0 +1,1 @@
+export {UserRoutes} from 'shared/common/enums/enums'

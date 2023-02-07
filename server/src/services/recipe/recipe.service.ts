@@ -61,11 +61,11 @@ export class RecipeService {
         const recipes: Recipe[] = await this.repo.getAllWithRelations()
         const possibleRecipes:Recipe[] = []
         const user = await this.userService.getByIdWithProducts(userId)
-
+    
         for (const recipe of recipes) {
             let isPossible = true
-            for (const product of recipe.productRecipes) {
-                const isExist = user.products.find((userProduct) => userProduct.id === product.id);
+            for (const productRecipe of recipe.productRecipes) {
+                const isExist = user.products.find((userProduct) => userProduct.id === productRecipe.product.id );
                 if(!isExist){
                     isPossible = false
                     break
@@ -76,6 +76,18 @@ export class RecipeService {
             }
         }
         return possibleRecipes
+    }
+
+    async checkRecipeIngredients(userId: number, recipeId: number) {
+        const recipe = await this.repo.get(recipeId)
+        const user = await this.userService.getByIdWithProducts(userId)
+        let possibleIngredients: {id: number, isPresent: boolean}[] = []
+        for (const productRecipe of recipe.productRecipes) {
+            const isExist = user.products.find((userProduct) => userProduct.id === productRecipe.product.id );
+            possibleIngredients.push({id: productRecipe.product.id, isPresent: Boolean(isExist)})
+        }
+        return possibleIngredients
+
     }
 
 }
