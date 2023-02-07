@@ -13,13 +13,17 @@ export class ProductController {
   public getAll = async (req: Request, res: Response, next:NextFunction) => {
     const {take, skip, name, filters, all} = req.query
     if(all){
+      try {
       res.json(await this.productService.getAll({
         take: 10,
         skip: 0,
         name: name as string,
       }))
       return
+    } catch (e) {
+      next(e)
     }
+  }
 
     const authHeader = req.headers.authorization
     const token = authHeader.split(' ')[1]
