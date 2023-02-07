@@ -57,6 +57,7 @@ const handleClickOutside = () => {
 const logout = () => {
   authStore.logout();
   initRouter.push(AppRoutes.SIGN_IN);
+  userTokenExists.value = false;
 }
 </script>
 
