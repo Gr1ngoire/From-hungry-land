@@ -4,6 +4,7 @@ enum ApiRoutes {
     PRODUCTS = "/products",
     PRODUCT_TAGS = "/product-tags",
     RECIPES = "/recipes",
+    USER = "/user",
 
 }
 
