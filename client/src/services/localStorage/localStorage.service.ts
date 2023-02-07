@@ -8,6 +8,10 @@ class LocalStorageService {
     public getToken(): string | null {
         return localStorage.getItem(LocalStorageItemsNames.TOKEN)
     }
+
+    public clearToken(): void {
+        localStorage.removeItem(LocalStorageItemsNames.TOKEN)
+    }
 }
 
 export {LocalStorageService}

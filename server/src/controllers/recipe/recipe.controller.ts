@@ -21,7 +21,7 @@ export class RecipeController{
 
     getAllRecipes = async (req: Request<any, any, any, RecipeQueryOptionType>, res: Response<Recipe[]>, next: NextFunction):Promise<void> => {
         try {
-            res.json(await this.recipeService.getAll(req.query))
+            res.json(await this.recipeService.getAll(req.headers.authorization, req.query))
         }catch (e){
             next(e)
         }

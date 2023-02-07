@@ -14,26 +14,33 @@
         <p>Page Name</p>
       </li>
       <li class="header-elem">
-        <router-link to="">
-          <button class="header-btn">
-            <font-awesome-icon :icon="['fas', 'user']"/>
-          </button>
-        </router-link>
+        <div v-if="userTokenExists"  class="logoutWrapper">
+          <Button @click="logout" text="Log out" type="click" class="bg-grey"/>
+        </div>
       </li>
     </ul>
   </nav>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+import {useRouter} from "vue-router";
 import { AppRoutes } from "@/common/enums/enums";
 import NavMenu from "./NavMenu.vue";
-import { ref } from "vue";
 import router from '@/router/index'
+import Button from './Button.vue'
+import {useAuthStore} from "@/stores/auth.store";
+import {LocalStorageService} from "@/services/localStorage/localStorage.service";
 
+const authStore = useAuthStore();
+const localStorageService = new LocalStorageService();
 const allowedToRender = ref<boolean>( false)
+const userTokenExists = ref<boolean>(Boolean(localStorageService.getToken()))
+
+const initRouter = useRouter()
 
 router.isReady().then(() => {
-  const route = router.currentRoute.value.path
+  const route = initRouter.currentRoute.value.path
   allowedToRender.value = route !== AppRoutes.SIGN_IN && route !== AppRoutes.SIGN_UP
 })
 
@@ -45,6 +52,12 @@ const toggleNavMenu = () => {
 
 const handleClickOutside = () => {
   isNavMenuOpen.value = false;
+}
+
+const logout = () => {
+  authStore.logout();
+  initRouter.push(AppRoutes.SIGN_IN);
+  userTokenExists.value = false;
 }
 </script>
 
@@ -78,6 +91,10 @@ nav {
 a {
   color: white;
   text-decoration: none;
+}
+
+.logoutWrapper {
+  padding-right: 16px;
 }
 
 .slide-fade-enter-active {
