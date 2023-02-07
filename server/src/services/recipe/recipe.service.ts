@@ -50,7 +50,6 @@ export class RecipeService {
         if (String(isPossibleRecipes) === "true") {
             const token = isAuthorizedFunction(authHeader)
             const user = await this.authService.getCurrentUser(token)
-            console.log(user)
             const possibleRecipes = await this.calcPossibleRecipes(user.id)
             finalRecipes = recipes.filter(recipe => possibleRecipes.find(item => item.id === recipe.id))
         }
