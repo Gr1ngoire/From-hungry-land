@@ -34,10 +34,6 @@ const handleClickOutside = () => {
     emit("close");
 }
 
-
-
-
-
 </script>
 
 <style scoped>

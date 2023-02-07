@@ -1,23 +1,14 @@
 import {NextFunction, Request, RequestHandler, Response} from "express";
-import {jwtService} from "@/services/services";
-import {ValidationExceptionMessages} from "shared/common/enums/exception/validation/validation-exception-message.enum";
-import { UnauthorizedException } from "@/common/exceptions/exceptions";
+import {isAuthorizedFunction} from "@/middlewares/authorization/is-authorized.function";
 
 const isAuthorized: RequestHandler = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    const authHeader = req.headers.authorization;
-    const [tokenFormat, token] = authHeader.split(' ')
-
-    if (tokenFormat !== 'Bearer' || !token) {
-        next(new UnauthorizedException(ValidationExceptionMessages.USER_IS_UNAUTHORIZED));
+    try{
+        const authHeader = req.headers.authorization;
+        isAuthorizedFunction(authHeader)
+        next()
+    }catch (e){
+        next(e)
     }
-
-    try {
-        jwtService.verifyToken(token);
-        next();
-    } catch {
-        next(new UnauthorizedException(ValidationExceptionMessages.USER_IS_UNAUTHORIZED));
-    }
-
 
 }
 

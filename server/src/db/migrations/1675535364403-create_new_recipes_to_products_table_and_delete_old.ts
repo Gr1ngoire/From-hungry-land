@@ -17,7 +17,7 @@ export class createNewRecipesToProductsTableAndDeleteOld1675535364403 implements
         await queryRunner.query(`ALTER TABLE "recipes_to_products" ADD CONSTRAINT "PK_b7f6dbf9c7345afbcaf4fa67ff8" PRIMARY KEY ("id")`);
         await queryRunner.query(`ALTER TABLE "recipes_to_products" ADD "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT ('now'::text)::timestamp(6) with time zone`);
         await queryRunner.query(`ALTER TABLE "recipes_to_products" ADD "created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT ('now'::text)::timestamp(6) with time zone`);
-        await queryRunner.query(`ALTER TABLE "recipes_to_products" ADD "quantity" integer NOT NULL DEFAULT '1'`);
+        await queryRunner.query(`ALTER TABLE "recipes_to_products" ADD "quantity" character varying NOT NULL DEFAULT '1'`);
         await queryRunner.query(`ALTER TABLE "recipes_to_products" ADD "recipeId" integer`);
         await queryRunner.query(`ALTER TABLE "recipes_to_products" ADD "productId" integer`);
         await queryRunner.query(`ALTER TABLE "recipes_to_products" ADD CONSTRAINT "FK_ab55fa250492194ab9dd3270d6e" FOREIGN KEY ("recipeId") REFERENCES "recipes"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);

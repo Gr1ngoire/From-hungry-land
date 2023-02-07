@@ -1,6 +1,9 @@
 import { Product } from "@/db/entities/product.entity";
 import {productTagService} from "@/services/services";
 import {ProductRepository} from "@/repositories/product/product.repository";
+import { FindOptionsWhere, In, Like } from "typeorm";
+import { userService } from "@/services/services";
+import { ProductQueryOptionType } from "shared/common/types/types";
 
 export class ProductService {
   private readonly repo:ProductRepository
@@ -9,9 +12,31 @@ export class ProductService {
     this.repo = repo;
   }
 
-  public getAll = async (): Promise<Product[]> => {
-    return await this.repo.getAll()
+  public getAll = async ({take, skip, name, filters, userId}: ProductQueryOptionType): Promise<Product[]> => {
+    const whereOptions:FindOptionsWhere<Product> = {}
+
+
+    if (userId) {
+      const user = await userService.getUserProducts(userId)
+      console.log("USERNAME" + user)
+      whereOptions.id = In(user.products.map(product => product.id))
+    }
+
+    if (name) {
+      whereOptions.name = Like(`%${name.trim()}%`)
+    }
+
+    if (filters) {
+      if (typeof filters === "string") {
+        whereOptions.productTag = { name: filters }
+      } else {
+        whereOptions.productTag = { name: In(filters) }
+      }
+    }
+
+    return await this.repo.getAll(take, skip, whereOptions);
   };
+
 
   public async getByProductTagId(id: number): Promise<Product[]> {
     await productTagService.get(id)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from "vue";
+
 
 const emit = defineEmits<{
   (e: "update:modelValue", checked: boolean): void
@@ -10,10 +10,9 @@ const props = defineProps<{
   id:string
 }>()
 
-const isSelected = ref<boolean>(props.modelValue)
+
 const toggle = (e: Event) => {
-  emit("update:modelValue", !isSelected.value)
-  isSelected.value = !isSelected.value
+  emit("update:modelValue", !props.modelValue)
 }
 
 
@@ -24,7 +23,7 @@ const toggle = (e: Event) => {
       type="checkbox"
       :id="props.id"
       class="checkbox"
-      :value="isSelected "
+      :checked=props.modelValue
       @change="toggle"
   >
 </template>

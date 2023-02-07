@@ -9,10 +9,8 @@ const tableName = 'recipes_to_products';
 export class RecipeToProductEntity extends Abstract{
 
 
-    @Column({
-        default: 1
-    })
-    quantity: number
+    @Column()
+    quantity: string
 
     @ManyToOne(type => Recipe, recipe => recipe.productRecipes)
     recipe: Recipe
