@@ -51,7 +51,6 @@ const handleSubmit: (event: Event) => void = (event: Event) => {
   event.preventDefault();
   if (Object.values(signInValidationState).every((el) => el.length === 0)) {
     authStore.signIn(signInFormState)
-    router.push(AppRoutes.PRODUCTS);
   }
 };
 

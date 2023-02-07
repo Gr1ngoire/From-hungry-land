@@ -1,5 +1,5 @@
 <template>
-  <button  @click="handleClick" :type="type || 'click'" :class="'btn ' + bgColor">
+  <button @click="handleClick" :class="'btn ' + bgColor">
     <font-awesome-icon v-if="icon" :icon="icon" />
     <span>{{ text }}</span>
   </button>
@@ -7,24 +7,13 @@
 
 <script setup lang="ts">
 
-defineProps({
-  text: {
-    type: String,
-    required: true,
-  },
-  bgColor: {
-    type: String,
-    required: true,
-  },
-  icon: {
-    type: Array,
-    required: false,
-  },
-  type: {
-    type: String,
-    required: false
-  }
-});
+type ButtonProps = {
+  text: string;
+  bgColor: string;
+  icon?: string[];
+}
+
+defineProps<ButtonProps>();
 
 const emit = defineEmits(["click"]);
 

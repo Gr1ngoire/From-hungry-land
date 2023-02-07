@@ -1,6 +1,6 @@
-import axiosLibInstance, {type InternalAxiosRequestConfig} from 'axios';
+import axiosLibInstance, {AxiosError, type AxiosResponse, type InternalAxiosRequestConfig} from 'axios';
 import {ENV} from '@/common/enums/api/api-path.enum';
-import {LocalStorageService} from '@/services/services'
+import {LocalStorageService, Notification} from '@/services/services'
 
 const axiosService = axiosLibInstance.create({
     baseURL: ENV.API.PATH,
@@ -14,6 +14,11 @@ axiosService.interceptors.request.use((config: InternalAxiosRequestConfig) => {
     config.headers.setAuthorization(`${DEFAULT_TOKEN_FORMAT} ${userToken}`);
 
     return config
+})
+
+axiosService.interceptors.response.use(response => response, (error) => {
+    const notificationService = new Notification();
+    notificationService.error(error.response.data.message)
 })
 
 export {axiosService};
