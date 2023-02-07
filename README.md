@@ -1,5 +1,7 @@
 # From hungry land application
 
+Before starting project install Postgresql
+
 ### To start project write
 1. Fill all the .env files folowing examples (on frontend and backend)
 Backend example
