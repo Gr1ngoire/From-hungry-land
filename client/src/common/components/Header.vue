@@ -10,9 +10,7 @@
           </NavMenu>
         </Transition>
       </li>
-      <li class="header-elem">
-        <p>Page Name</p>
-      </li>
+    
       <li class="header-elem">
         <div v-if="authStore.getCurrentUserData" class="authActionWrapper">
           <Button @click="logout" :text="`${authStore.getCurrentUserData?.nickname}/Log out`" bg-color="bg-grey" class="bg-grey"/>
