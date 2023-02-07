@@ -62,7 +62,7 @@ const toggle = () =>{
           />
         </transition-group>
         <div class="list__empty" v-if="!recipeStore.isLoading &&!recipeStore.isRecipesLoaded">
-          Input something else. Current value is invalid
+          Nothing found :(
         </div>
       </div>
       <div class="list__spinner" v-else>
