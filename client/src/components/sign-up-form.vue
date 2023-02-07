@@ -53,7 +53,6 @@ const handleSubmit: (event: Event) => void = (event: Event) => {
   event.preventDefault();
   if (Object.values(signUpValidationState).every((el) => el.length === 0)) {
     authStore.signUp(signUpFormState);
-    console.log("SIGN UP!", signUpFormState)
     router.push(AppRoutes.PRODUCTS);
   }
 };
