@@ -30,6 +30,15 @@ class UserService {
     public async getUserProducts(id: number): Promise<UserProductsDTO> {
         return await this.repository.getUserProducts(id);
     }
+
+    public async addProductToUser(userId: number, productId: number): Promise<void> {
+         await this.repository.addProductToUser(userId, productId);
+    }
+
+    public async removeProductFromUser(userId: number, productId: number): Promise<void> {
+        await this.repository.removeProductFromUser(userId, productId);
+    }
+
 }
 
 export {UserService}
