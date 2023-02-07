@@ -72,6 +72,8 @@ router.beforeEach(async (to) => {
                 break;
         }
     }
+
+    authStore.setIsSignInButtonRenderable(to.path !== AppRoutes.SIGN_IN && to.path !== AppRoutes.SIGN_UP)
 })
 
 export default router

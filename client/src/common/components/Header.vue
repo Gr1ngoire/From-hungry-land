@@ -3,7 +3,7 @@
     <ul class="header-elements">
       <li class="header-elem">
         <button class="header-btn" @click="toggleNavMenu">
-          <font-awesome-icon :icon="['fas', 'bars']" />
+          <font-awesome-icon :icon="['fas', 'bars']"/>
         </button>
         <Transition name="slide-fade">
           <NavMenu @close="handleClickOutside" v-if="isNavMenuOpen">
@@ -14,8 +14,11 @@
         <p>Page Name</p>
       </li>
       <li class="header-elem">
-        <div v-if="userTokenExists"  class="logoutWrapper">
-          <Button @click="logout" text="Log out" type="click" class="bg-grey"/>
+        <div v-if="authStore.getCurrentUserData" class="authActionWrapper">
+          <Button @click="logout" :text="`${authStore.getCurrentUserData?.nickname}/Log out`" bg-color="bg-grey" class="bg-grey"/>
+        </div>
+        <div v-else-if="!authStore.getCurrentUserData && authStore.getIsSignInButtonRenderable" class="authActionWrapper">
+          <Button @click="redirectToSignIn" bg-color="bg-grey" text="Sign In"/>
         </div>
       </li>
     </ul>
@@ -23,19 +26,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import {ref} from "vue";
 import {useRouter} from "vue-router";
-import { AppRoutes } from "@/common/enums/enums";
+import {AppRoutes} from "@/common/enums/enums";
 import NavMenu from "./NavMenu.vue";
-import Button from './Button.vue'
+import Button from './Button.vue';
 import {useAuthStore} from "@/stores/auth.store";
-import {LocalStorageService} from "@/services/localStorage/localStorage.service";
 
+const initRouter = useRouter();
 const authStore = useAuthStore();
-const localStorageService = new LocalStorageService();
-const userTokenExists = ref<boolean>(Boolean(localStorageService.getToken()))
-
-const initRouter = useRouter()
 
 
 const isNavMenuOpen = ref(false);
@@ -51,8 +50,12 @@ const handleClickOutside = () => {
 const logout = () => {
   authStore.logout();
   initRouter.push(AppRoutes.SIGN_IN);
-  userTokenExists.value = false;
 }
+
+const redirectToSignIn = () => {
+  initRouter.push(AppRoutes.SIGN_IN)
+}
+
 </script>
 
 <style scoped>
@@ -87,7 +90,7 @@ a {
   text-decoration: none;
 }
 
-.logoutWrapper {
+.authActionWrapper {
   padding-right: 16px;
 }
 
