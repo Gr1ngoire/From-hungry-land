@@ -15,7 +15,7 @@
       </li>
       <li class="header-elem">
         <div v-if="userTokenExists"  class="logoutWrapper">
-          <Button @click="logout" text="Log out" type="click" class="bg-grey"/>
+          <Button @click="logout" text="Log out" type="click" bg-color="bg-pink" class="bg-grey"/>
         </div>
       </li>
     </ul>
