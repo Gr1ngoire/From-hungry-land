@@ -1,7 +1,7 @@
 import { Product } from "@/db/entities/product.entity";
 import {productTagService} from "@/services/services";
 import {ProductRepository} from "@/repositories/product/product.repository";
-import { FindOptionsWhere, In, Like } from "typeorm";
+import { FindOptionsWhere, In, ILike } from "typeorm";
 import { userService } from "@/services/services";
 import { ProductQueryOptionType } from "shared/common/types/types";
 
@@ -23,7 +23,7 @@ export class ProductService {
     }
 
     if (name) {
-      whereOptions.name = Like(`%${name.trim()}%`)
+      whereOptions.name = ILike(`%${name.trim()}%`)
     }
 
     if (filters) {

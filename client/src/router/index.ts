@@ -26,7 +26,7 @@ const router = createRouter({
         },
         {
             path: AppRoutes.RECIPES,
-            alias: ["/"],
+            alias: [AppRoutes.DEFAULT],
             name: pathSlashStripper(AppRoutes.RECIPES),
             component: RecipeBrowserView
         },

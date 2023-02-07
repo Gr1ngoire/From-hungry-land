@@ -1,4 +1,5 @@
 enum AppRoutes {
+    DEFAULT = "/",
     ALL = "/:catchAll(.*)",
     SIGN_IN = "/signIn",
     SIGN_UP = "/signUp",
