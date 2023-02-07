@@ -5,7 +5,9 @@ import { faBars, faXmark, faCaretDown, faSpinner, faFilter, faBook } from "@fort
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import {faInstagram, faFacebook, faTelegram} from "@fortawesome/free-brands-svg-icons"
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faBars, faUser, faPlus, faXmark, faCaretDown, faSpinner, faFilter, faBook, faFacebook, faInstagram, faTelegram);
+library.add(faBars, faUser, faPlus, faXmark, faCaretDown, faSpinner, 
+    faFilter, faBook, faFacebook, faInstagram, faTelegram, faChevronLeft, faChevronRight);
 
 export { FontAwesomeIcon };
