@@ -1,14 +1,16 @@
 <template>
-        <div @click="handleClickOutside" class="nav-menu">
-            <ul class="nav-menu__list">
-                <li class="nav-menu__list-item" v-for="route in navRoutes" :key="route.name">
-                    <router-link :to="route.path" class="nav-menu__list-item-link">
-                        {{ route.name }}
-                    </router-link>
+    <div @click="handleClickOutside" class="nav-menu">
+        <ul class="nav-menu__list">
+            <router-link v-for="route in navRoutes" :to="route.path" class="router_link" >
+                <div class="nav-menu__list-item-link">
+                <li class="nav-menu__list-item" :key="route.name">
+                    {{ route.name }}
                 </li>
-            </ul>
-        </div>
-  
+            </div>
+            </router-link>
+        </ul>
+    </div>
+
 </template>
 
 <script setup lang="ts">
@@ -28,7 +30,7 @@ const navRoutes = [
 ];
 
 
-const emit = defineEmits(["close"]); 
+const emit = defineEmits(["close"]);
 
 const handleClickOutside = () => {
     emit("close");
@@ -55,7 +57,7 @@ const handleClickOutside = () => {
     padding: 0;
     margin: 0;
     background-color: rgb(218, 218, 218);
-z-index: 5;
+    z-index: 5;
 }
 
 .nav-menu__list-item {
@@ -63,11 +65,28 @@ z-index: 5;
     border-bottom: 1px solid black;
 }
 
+.router_link {
+    text-decoration: none;
+    color: black;
+}
+
 .nav-menu__list-item-link {
+    width: 100%;
     text-decoration: none;
     font-weight: 600;
     color: rgb(86, 86, 86);
+    margin: 0;
+    padding: 0;
+    z-index: 6;
+    transition: all .4s ease-in-out;
 }
+
+
+.nav-menu__list-item-link:hover {
+    color: rgb(255, 255, 255);
+    background-color: var(--header-color)
+}
+
 
 @media screen and (max-width: 768px) {
     .nav-menu__list {
@@ -75,7 +94,4 @@ z-index: 5;
     }
 
 }
-
-
-
 </style>
