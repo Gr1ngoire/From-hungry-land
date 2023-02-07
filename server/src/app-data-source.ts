@@ -13,8 +13,6 @@ const {
     DATABASE_NAME,
 } = process.env;
 
-console.log(DATABASE_PASSWORD)
-
 const dataSource = new DataSource({
     type: DB_CLIENT,
     host: DATABASE_HOST,
