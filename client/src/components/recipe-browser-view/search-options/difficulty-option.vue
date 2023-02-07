@@ -31,7 +31,7 @@ watch(selectedDifficulties.value, (currValue: { [key: string]: boolean }) => {
 <template>
   <div class="option">
     <div class="option__title">
-      Difficult
+      Difficulty
     </div>
     <div
         class="option__raw"

@@ -39,7 +39,11 @@ export const useRecipeBrowserStore = defineStore(StoreNames.RECIPES, () => {
         queryOptions.value.skip = skip
     }
 
-    const setRecioes = (arr: RecipeDtoType[]) =>{
+    const setIsPossibleRecipes = (isSelected:boolean) =>{
+        queryOptions.value.isPossibleRecipes = isSelected
+    }
+
+    const setRecipes = (arr: RecipeDtoType[]) =>{
         recipes.value = arr
     }
 
@@ -56,6 +60,8 @@ export const useRecipeBrowserStore = defineStore(StoreNames.RECIPES, () => {
         setSearchQuery,
         setQueryOptions,
         setDifficult,
-        setTakeSkip
+        setTakeSkip,
+        setRecipes,
+        setIsPossibleRecipes
     }
 })

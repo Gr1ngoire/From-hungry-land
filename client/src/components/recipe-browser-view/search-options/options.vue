@@ -2,11 +2,13 @@
 
 import PossibleRecipesOption from "@/components/recipe-browser-view/search-options/possible-recipes-option.vue";
 import DifficultyOption from "@/components/recipe-browser-view/search-options/difficulty-option.vue";
+import {useAuthStore} from "@/stores/auth.store";
+const authStore = useAuthStore()
 </script>
 
 <template>
   <div class="options">
-    <PossibleRecipesOption class="option__possible-recipes"/>
+    <PossibleRecipesOption class="option__possible-recipes" v-if="authStore.getCurrentUserData"/>
     <DifficultyOption/>
   </div>
 </template>

@@ -4,10 +4,13 @@ import {ref, watch} from "vue";
 import {useRecipeBrowserStore} from "@/stores/recipe-browser-store";
 
 const recipeStore = useRecipeBrowserStore()
+
+
 const isSelected = ref<boolean>(false)
-// watch(isSelected, (selection, prevSelection) =>{
-//   recipeStore.
-// })
+watch(isSelected, (selection) =>{
+  recipeStore.setIsPossibleRecipes(Boolean(selection))
+  recipeStore.fetchRecipes()
+})
 const checkBoxId:string = "PossibleRecipesCheckBox"
 
 </script>
@@ -25,7 +28,6 @@ const checkBoxId:string = "PossibleRecipesCheckBox"
     >
       Possible recipes for your product list
     </label>
-
   </div>
 </template>
 

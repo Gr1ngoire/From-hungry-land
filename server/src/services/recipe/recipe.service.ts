@@ -31,10 +31,9 @@ export class RecipeService {
     }
 
     async getAll(authHeader:string,
-                 {difficulty, searchQuery, skip, take, isPossibleRecipes}: RecipeQueryOptionType
+                 {searchQuery, isPossibleRecipes, skip, take, difficulty}: RecipeQueryOptionType
     ): Promise<Recipe[]> {
         const whereOptions: FindOptionsWhere<Recipe> = {}
-
         if (searchQuery) {
             whereOptions.name = ILike(`%${searchQuery.trim()}%`)
         }
@@ -47,12 +46,11 @@ export class RecipeService {
             }
         }
         const recipes = await this.repo.getAll(take, skip, whereOptions)
-
         let finalRecipes:Recipe[] = recipes;
-
-        if (isPossibleRecipes) {
+        if (String(isPossibleRecipes) === "true") {
             const token = isAuthorizedFunction(authHeader)
             const user = await this.authService.getCurrentUser(token)
+            console.log(user)
             const possibleRecipes = await this.calcPossibleRecipes(user.id)
             finalRecipes = recipes.filter(recipe => possibleRecipes.find(item => item.id === recipe.id))
         }
