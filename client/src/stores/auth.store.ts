@@ -32,6 +32,11 @@ const useAuthStore = defineStore(StoreNames.AUTH, () => {
         currentUserData.value = user;
     }
 
+    const logout = () => {
+        currentUserData.value = undefined;
+        localStorageService.clearToken();
+    }
+
     const getCurrentUser = async () => {
         const userData = await authService.getCurrentUser();
         currentUserData.value = userData;
@@ -41,6 +46,7 @@ const useAuthStore = defineStore(StoreNames.AUTH, () => {
         getCurrentUserData,
         signIn,
         signUp,
+        logout,
         getCurrentUser,
     }
 })
