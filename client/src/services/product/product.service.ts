@@ -9,6 +9,7 @@ export class ProductService {
         skip?: number,
         name?: string,
         filters?: string[] | string,
+        all?: boolean,
     }): Promise<ProductDTO[]> {
         const {data} = await axiosService.get(ApiRoutes.PRODUCTS, {params: options})
         console.log(data)
