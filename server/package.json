@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && npm run migration:run && node build/server/src/index.js",
+    "build": "tsc && npm run migration:run && node -r tsconfig-paths/register -r ts-node/register build/server/src/index.js",
     "start:build": "tsc -watch",
     "start:run": "nodemon build/server/src/index.js",
     "start": "concurrently npm:start:*",
