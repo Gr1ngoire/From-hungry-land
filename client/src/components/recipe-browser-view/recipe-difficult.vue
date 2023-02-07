@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {PropType} from "vue";
-import {RecipeDifficulty} from "@/common/enums/enums";
+import type {RecipeDifficulty} from "@/common/enums/enums";
 
 const props = defineProps({
   difficult: String as PropType<RecipeDifficulty>

@@ -11,20 +11,20 @@ const props = defineProps({
 
 <template>
   <div class="item">
-    <router-link :to="`recipes/${props.recipe.id}`">
+    <router-link :to="`recipes/${recipe?.id}`">
       <img
-          :src="props.recipe.imgUrl"
-          :alt="props.recipe.name"
+          :src="recipe?.imgUrl"
+          :alt="recipe?.name"
           class="item__img"
       >
     </router-link>
     <div class="item__img-info">
       <RecipeDifficult
           class="item__difficult"
-          :difficult="props.recipe.difficult"
+          :difficult="recipe?.difficult"
       />
       <div class="item__name">
-        {{props.recipe.name}}
+        {{recipe?.name}}
       </div>
     </div>
   </div>
