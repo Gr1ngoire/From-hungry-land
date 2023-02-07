@@ -40,4 +40,31 @@ onMounted(() =>{
 .recipes__section{
   padding: 2rem;
 }
+@media (max-width: 1150px) {
+  .list{
+    margin-right: 1.5rem;
+  }
+
+
+
+}
+@media (max-width: 768px) {
+  .tags{
+    display: none;
+  }
+  .list{
+    flex: 1 1 auto;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .recipes__section{
+    padding: 2rem;
+  }
+  .page-wrapper{
+    padding: 2rem;
+  }
+}
+
 </style>

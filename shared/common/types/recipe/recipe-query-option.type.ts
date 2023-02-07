@@ -6,5 +6,6 @@ export type RecipeQueryOptionType = {
     skip?:number,
     searchQuery?:string
     difficulty?:RecipeDifficulty[] | RecipeDifficulty
+    isPossibleRecipes?:boolean
 }
 

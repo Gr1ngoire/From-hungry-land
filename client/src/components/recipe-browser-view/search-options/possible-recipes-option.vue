@@ -1,9 +1,18 @@
 <script setup lang="ts">
 import CheckBox from "@/common/components/CheckBox.vue";
-import {ref} from "vue";
+import {ref, watch} from "vue";
+import {useRecipeBrowserStore} from "@/stores/recipe-browser-store";
+
+const recipeStore = useRecipeBrowserStore()
+
 
 const isSelected = ref<boolean>(false)
+watch(isSelected, (selection) =>{
+  recipeStore.setIsPossibleRecipes(Boolean(selection))
+  recipeStore.fetchRecipes()
+})
 const checkBoxId:string = "PossibleRecipesCheckBox"
+
 </script>
 
 <template>
@@ -19,7 +28,6 @@ const checkBoxId:string = "PossibleRecipesCheckBox"
     >
       Possible recipes for your product list
     </label>
-
   </div>
 </template>
 
@@ -29,7 +37,9 @@ const checkBoxId:string = "PossibleRecipesCheckBox"
   align-items: center;
 }
 .option__checkbox{
-  margin-right: 20px;
+  flex: 0 0 25px ;
+  margin-right: 15px;
+
 }
 .option__desc{
   font-size: 1.2rem;

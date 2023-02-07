@@ -37,7 +37,6 @@ const props = defineProps({
   width: 250px;
   height: 235px;
   position: relative;
-
 }
 .item:hover{
   outline: 2px solid #b9004a;

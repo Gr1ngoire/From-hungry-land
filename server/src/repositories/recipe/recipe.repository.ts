@@ -38,7 +38,32 @@ export class RecipeRepository {
             }
         });
     }
+    async getAllWithRelations(): Promise<Recipe[]>{
+        return await this.repo.find({
+            select: {
+                id: true,
+                name: true,
+                instruction: true,
+                imgUrl: true,
+                difficult: true,
+                productRecipes: {
+                    id:true,
+                    quantity:true,
+                    product:{
+                        id:true,
+                        name:true,
+                        imgUrl:true,
+                    }
+                }
 
+            },
+            relations: {
+                productRecipes:{
+                    product:true
+                }
+            },
+        });
+    }
     async getAll(take: number, skip: number, whereOptions: FindOptionsWhere<Recipe>): Promise<Recipe[]> {
         return await this.repo.find({
             select: {
