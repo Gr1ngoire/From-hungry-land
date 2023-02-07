@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="allowedToRender">
+  <nav>
     <ul class="header-elements">
       <li class="header-elem">
         <button class="header-btn" @click="toggleNavMenu">
@@ -27,22 +27,16 @@ import { ref } from "vue";
 import {useRouter} from "vue-router";
 import { AppRoutes } from "@/common/enums/enums";
 import NavMenu from "./NavMenu.vue";
-import router from '@/router/index'
 import Button from './Button.vue'
 import {useAuthStore} from "@/stores/auth.store";
 import {LocalStorageService} from "@/services/localStorage/localStorage.service";
 
 const authStore = useAuthStore();
 const localStorageService = new LocalStorageService();
-const allowedToRender = ref<boolean>( false)
 const userTokenExists = ref<boolean>(Boolean(localStorageService.getToken()))
 
 const initRouter = useRouter()
 
-router.isReady().then(() => {
-  const route = initRouter.currentRoute.value.path
-  allowedToRender.value = route !== AppRoutes.SIGN_IN && route !== AppRoutes.SIGN_UP
-})
 
 const isNavMenuOpen = ref(false);
 

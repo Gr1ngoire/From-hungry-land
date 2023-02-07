@@ -1,5 +1,5 @@
 <template>
-  <div v-if="allowedToRender" class="footerWrapper">
+  <div class="footerWrapper">
     <hr class="separator" />
     <div class="footer">
       <div class="links">
@@ -22,16 +22,6 @@
 </template>
 
 <script setup lang="ts">
-import { AppRoutes } from "@/common/enums/enums";
-import { ref } from "vue";
-import router from '@/router/index'
-
-const allowedToRender = ref<boolean>(false)
-
-router.isReady().then(() => {
-  const route = router.currentRoute.value.path
-  allowedToRender.value = route !== AppRoutes.SIGN_IN && route !== AppRoutes.SIGN_UP
-})
 </script>
 
 <style scoped>
