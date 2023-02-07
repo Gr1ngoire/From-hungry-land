@@ -18,8 +18,20 @@ export const useProductListStore = defineStore(StoreNames.PRODUCTS, () => {
     const isProductsLoaded: ComputedRef<Boolean> = computed(() => products.value.length > 0);
     const isProductTagsLoaded: ComputedRef<Boolean> = computed(() => productTags.value.length > 0);
     
-    const fetchProducts = async () => {
-        products.value = await productService.getProducts()
+    const fetchProducts = async (options?: {
+        take?: number,
+        skip?: number,
+        name?: string,
+        filters?: string[] | string,
+    }) => {
+        products.value = await productService.getProducts(
+            {
+                take: options?.take || 20,
+                skip: options?.skip || 0,
+                name: options?.name,
+                filters: options?.filters
+            }
+        )
     }
 
     const fetchProductTags = async () => {
