@@ -69,7 +69,6 @@ export class RecipeService {
                 const isExist = user.products.find((userProduct) => userProduct.id === productRecipe.product.id );
                 if(!isExist){
                     isPossible = false
-                    console.log("Break")
                     break
                 }
             }
