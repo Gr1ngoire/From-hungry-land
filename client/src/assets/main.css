@@ -21,6 +21,11 @@ h1 {
     flex-grow: 1;
 }
 
+.flex-grow-0 {
+    flex-grow: 0;
+    min-width: 4rem;
+}
+
 /* rounding */
 
 .rounded {
@@ -56,6 +61,15 @@ h1 {
 .bg-cyan-green:hover {
     background-color: #00d77d;
 }
+
+.bg-cyan-blue {
+    background-color: #02eeff;
+}
+
+.bg-cyan-blue:hover {
+    background-color: #00a292;
+}
+
 
 .bg-grey {
     background-color: #ACACAC;

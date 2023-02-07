@@ -1,4 +1,4 @@
-import {Repository} from "typeorm";
+import {FindOptionsWhere, Repository} from "typeorm";
 import {Product} from "@/db/entities/product.entity";
 
 export class ProductRepository{
@@ -8,17 +8,24 @@ export class ProductRepository{
         this.repo = repo;
     }
 
-    public getAll = async (): Promise<Product[]> => {
+    public getAll = async (take: number, skip: number, whereOptions: FindOptionsWhere<Product>): Promise<Product[]> => {
         return await this.repo.find({
             relations:{
                 productTag:true
             },
             select:{
+                id:true,
                 name:true,
                 imgUrl:true
-            }
-        });
+            },
+            take: take || 20,
+            skip: skip || 0,
+            where: whereOptions,
+            
+        })
     };
+
+
 
     public async getByTagId(id: number): Promise<Product[]> {
         return await this.repo.find({

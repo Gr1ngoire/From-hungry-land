@@ -5,6 +5,7 @@ import {AlreadyExistsException} from "@/common/exceptions/user/already-exists.ex
 import {RoleRepository} from "@/repositories/role/role.repository";
 import {Roles} from "shared/common/enums/role/roles.enum";
 import {ValidationExceptionMessages} from "shared/common/enums/exception/validation/validation-exception-message.enum";
+import { UserProductsDTO } from "shared/common/types/user/user-products-dto.type";
 
 class UserRepository {
     constructor(private dbUserRepository: Repository<User>, private roleRepository: RoleRepository) {}
@@ -21,7 +22,18 @@ class UserRepository {
                 email: true,
             },
             relations: {
-                role: true
+                role: true,
+            }
+        })
+    }
+
+    public async getUserProducts(id: number): Promise<UserProductsDTO> {
+        return await this.dbUserRepository.findOne({
+            where: {
+                id
+            },
+            relations: {
+                products: true
             }
         })
     }
@@ -41,6 +53,9 @@ class UserRepository {
             }
         })
     }
+
+
+
     public getByEmail(email: string): Promise<UserResponseDto | null> {
         return this.dbUserRepository.findOne({
             where: {
