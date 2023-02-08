@@ -24,3 +24,9 @@ Frontend example
 
 
 Hosted frontend link: https://main--iridescent-gaufre-82a17b.netlify.app/
+
+Used cloud services:
+
+Backend deploy: https://railway.app/
+Frontend deploy: https://app.netlify.com/
+Database deploy: https://customer.elephantsql.com/
